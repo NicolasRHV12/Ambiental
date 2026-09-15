@@ -1,0 +1,32 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    padding: 0.5em 1em;
+    color: gray;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 1em;
+    margin: 0;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: gray;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #aaf58adc;
+}
+
+
