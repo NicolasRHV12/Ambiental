@@ -13,10 +13,9 @@ body {
 }
 
 /* =========================================
-   FONDO CON TEXTURA Y LAZO AZUL
+   FONDO CON TEXTURA
    ========================================= */
 
-/* Textura sutil de puntos de papel */
 body::before {
     content: "";
     position: fixed;
@@ -45,12 +44,11 @@ body::before {
 .bg-wave-wrap img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Cubre toda la pantalla manteniendo la proporción alta resolución */
-    object-position: center; /* Centra la imagen */
+    object-fit: cover;
+    object-position: center;
     display: block;
 }
 
-/* Luces / Glows ambientales detrás del lazo */
 .bg-wave-glow {
     position: fixed;
     top: 0;
@@ -69,7 +67,6 @@ body::before {
     width: 40%;
     background: radial-gradient(closest-side, rgba(70, 230, 180, 0.3), transparent 70%);
 }
-
 
 /* =========================================
    NAVBAR
@@ -92,13 +89,10 @@ body::before {
         0 10px 30px rgba(0, 0, 0, 0.199),
         inset 0 1px 0 rgba(255, 255, 255, 0.512);
     backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
 }
 
-
-/* =========================================
-   LOGO
-   ========================================= */
-
+/* LOGO */
 .logo-container {
     display: flex;
     align-items: center;
@@ -113,12 +107,12 @@ body::before {
     justify-content: center;
     align-items: center;
     border-radius: 10px;
-    background: #99ff78;
+    background: transparent;
     color: white;
     font-size: 28px;
     font-weight: 300;
     line-height: 1;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.18);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.556);
 }
 
 .logo-text {
@@ -139,11 +133,7 @@ body::before {
     color: #404143;
 }
 
-
-/* =========================================
-   MENU
-   ========================================= */
-
+/* MENU */
 .menu {
     display: flex;
     align-items: center;
@@ -162,10 +152,7 @@ body::before {
     text-decoration: none;
     font-size: 17px;
     white-space: nowrap;
-    transition:
-        background 0.25s ease,
-        color 0.25s ease,
-        transform 0.25s ease;
+    transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease;
 }
 
 .nav-item:hover {
@@ -191,11 +178,7 @@ body::before {
     color: white;
 }
 
-
-/* =========================================
-   BOTONES DERECHA
-   ========================================= */
-
+/* ACCIONES / BOTONES */
 .actions {
     display: flex;
     align-items: center;
@@ -236,23 +219,78 @@ body::before {
     font-size: 22px;
 }
 
-.small-arrow {
-    width: 20px;
-    height: 35px;
-    border: none;
-    background: transparent;
-    color: #777b82;
-    font-size: 27px;
-    cursor: pointer;
-    transition:
-        color 0.2s ease,
-        transform 0.2s ease;
+/* =========================================
+   SECCIÓN HERO (TITULO Y PARRAFO MODERNO)
+   ========================================= */
+
+.hero-container {
+    position: relative;
+    z-index: 5;
+    width: calc(100% - 150px);
+    margin: 70px auto 0;
+    display: flex;
+    justify-content: flex-start;
 }
 
-.small-arrow:hover {
-    color: #111;
-    transform: translateX(2px);
+.hero-card {
+    max-width: 600px;
+    padding: 40px;
+    border-radius: 32px;
+    background: rgba(15, 20, 25, 0.45);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+    color: #ffffff;
 }
+
+.hero-tag {
+    display: inline-block;
+    padding: 6px 16px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+    color: #e0f2fe;
+}
+
+.hero-title {
+    font-size: 46px;
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.5px;
+    margin-bottom: 16px;
+}
+
+.hero-description {
+    font-size: 17px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.85);
+    font-weight: 300;
+}
+
+/* ENVOLTORIO DE LA IMAGEN (SIN CARDS NI FONDOS) */
+.hero-image-wrap {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+}
+
+.hero-planet {
+    width: 100%;
+    max-width: 700px;
+    border-radius: 10%;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.578);
+    transform: translateX(40px)
+    
+}
+
 
 
 /* =========================================
@@ -261,6 +299,10 @@ body::before {
 
 @media (max-width: 1200px) {
     .navbar {
+        width: calc(100% - 60px);
+    }
+
+    .hero-container {
         width: calc(100% - 60px);
     }
 
@@ -295,11 +337,33 @@ body::before {
     }
 }
 
+@media (max-width: 768px) {
+    .hero-container {
+        margin-top: 40px;
+    }
+
+    .hero-card {
+        padding: 28px;
+    }
+
+    .hero-title {
+        font-size: 34px;
+    }
+
+    .hero-description {
+        font-size: 15px;
+    }
+}
+
 @media (max-width: 550px) {
     .navbar {
         width: calc(100% - 30px);
         margin-top: 15px;
         padding: 12px 15px;
+    }
+
+    .hero-container {
+        width: calc(100% - 30px);
     }
 
     .logo-text {
@@ -317,9 +381,5 @@ body::before {
         width: 38px;
         height: 38px;
         font-size: 18px;
-    }
-
-    .small-arrow {
-        display: none;
     }
 }
