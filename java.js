@@ -1,28 +1,38 @@
-// =========================================
-// MENÚ DE NAVEGACIÓN
-// =========================================
+// ACORDEÓN INTERACTIVO
+const accordionHeaders = document.querySelectorAll(".accordion-header");
 
+accordionHeaders.forEach((header) => {
+    header.addEventListener("click", function () {
+        const currentItem = this.parentElement;
+
+        document.querySelectorAll(".accordion-item").forEach((item) => {
+            if (item !== currentItem) {
+                item.classList.remove("active");
+            }
+        });
+
+        currentItem.classList.toggle("active");
+    });
+});
+
+
+// NAVEGACIÓN
 const navItems = document.querySelectorAll(".nav-item");
 
 navItems.forEach(function (item) {
     item.addEventListener("click", function (event) {
         event.preventDefault();
 
-        // Quitar active de todos
         navItems.forEach(function (nav) {
             nav.classList.remove("active");
         });
 
-        // Activar el seleccionado
         item.classList.add("active");
     });
 });
 
 
-// =========================================
-// ACCIONES Y DESPLIEGUE CON BOTÓN/FLECHA
-// =========================================
-
+// ACCIONES DE BOTÓN DE INICIO Y DRAWER
 const startButton = document.getElementById("startBtn");
 const arrowBtn = document.getElementById("arrowBtn");
 const drawerPanel = document.getElementById("drawerPanel");
@@ -49,10 +59,7 @@ startButton.addEventListener("mouseleave", function () {
 });
 
 
-// =========================================
 // PLANETA 3D INTERACTIVO (WEBGL)
-// =========================================
-
 function App() {
     const conf = {
         el: 'canvas',
@@ -62,7 +69,7 @@ function App() {
 
     const { WebGLRenderer, PerspectiveCamera, OrbitControls, AmbientLight, DirectionalLight, Scene } = THREE;
     const { Object3D, CylinderGeometry, IcosahedronGeometry, SphereGeometry, MeshLambertMaterial, Mesh, Vector3, Color } = THREE;
-    const { randFloat: rnd, randFloatSpread: rndFS } = THREE.MathUtils || THREE.Math;
+    const { randFloat: rnd } = THREE.MathUtils || THREE.Math;
     const { random, PI } = Math;
     const simplex = new SimplexNoise();
 
@@ -74,7 +81,7 @@ function App() {
     init();
 
     function init() {
-        const wrapper = document.querySelector('.planet-3d-wrapper');
+        const wrapper = document.querySelector('.canvas-container');
         renderer = new WebGLRenderer({ canvas: document.getElementById(conf.el), antialias: true, alpha: true });
         
         camera = new PerspectiveCamera(conf.fov, wrapper.clientWidth / wrapper.clientHeight, 1, 1000);
@@ -123,9 +130,9 @@ function App() {
             v.x = dv.x; v.y = dv.y; v.z = dv.z;
         };
 
-        // Geometría del Planeta
+        // Construcción de la superficie (Verde para continentes, Azul para océanos)
         let baseGeo = new IcosahedronGeometry(80, 4);
-        baseGeo = baseGeo.toNonIndexed(); // Convertir a caras individuales para sombreado plano
+        baseGeo = baseGeo.toNonIndexed();
 
         const posAttr = baseGeo.attributes.position;
         const colors = [];
@@ -147,7 +154,6 @@ function App() {
             posAttr.setXYZ(i + 1, vB.x, vB.y, vB.z);
             posAttr.setXYZ(i + 2, vC.x, vC.y, vC.z);
 
-            // Determinar si la cara es agua o tierra verde
             const isWater = (nA === noiseWaterLevel && nB === noiseWaterLevel && nC === noiseWaterLevel);
             const faceColor = isWater ? blueColor : greenColor;
 
@@ -165,11 +171,11 @@ function App() {
         const mesh = new Mesh(baseGeo, material);
         planet.add(mesh);
 
-        // Animación de aparición
+        // Animación GSAP de entrada
         planet.scale.set(0.2, 0.2, 0.2);
         gsap.to(planet.scale, { duration: 2.5, x: 1, y: 1, z: 1, ease: "power2.out" });
 
-        // Añadir Árboles y Rocas
+        // Población de vegetación y rocas
         const cscale = chroma.scale([0x509A36, 0xFF5A36, 0x509A36, 0xFFC236, 0x509A36]);
         const points = getFibonacciSpherePoints(500, 80);
 
@@ -235,7 +241,7 @@ function App() {
     }
 
     function updateSize() {
-        const wrapper = document.querySelector('.planet-3d-wrapper');
+        const wrapper = document.querySelector('.canvas-container');
         if (!wrapper) return;
         width = wrapper.clientWidth;
         height = wrapper.clientHeight;

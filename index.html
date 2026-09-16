@@ -7,7 +7,7 @@
     <title>Bionova Simulator</title>
     <link rel="stylesheet" href="styles.css">
 
-    <!-- LIBRERÍAS EXTERNAS PARA EL PLANETA WEBGL -->
+    <!-- LIBRERÍAS EXTERNAS PARA EL PLANETA WEBGL Y ANIMACIONES -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/simplex-noise/2.4.0/simplex-noise.min.js"></script>
@@ -17,7 +17,7 @@
 
 <body>
 
-    <!-- ─── FONDO ESTÁTICO (LAZO AZUL + RESPLANDORES) ─── -->
+    <!-- FONDO ESTÁTICO DE LUCES Y TEXTURA -->
     <div class="bg-wave-glow"></div>
     <div class="bg-wave-glow b"></div>
     <div class="bg-wave-wrap">
@@ -58,7 +58,7 @@
             </a>
         </nav>
 
-        <!-- BOTONES -->
+        <!-- BOTÓN DE ACCIÓN -->
         <div class="actions">
             <button class="start-button" id="startBtn">
                 <span>Comenzar</span>
@@ -68,33 +68,89 @@
 
     </header>
 
-    <!-- ─── SECCIÓN PRINCIPAL (HERO) ─── -->
+    <!-- SECCIÓN PRINCIPAL (HERO) -->
     <main class="hero-container">
         <div class="hero-card">
-            <span class="hero-tag">Plataforma Interactiva y Dinamica</span>
+            <span class="hero-tag">Plataforma Interactiva y Dinámica</span>
             <h1 class="hero-title">Explora el Equilibrio Planetario y el Futuro Sostenible</h1>
             <p class="hero-description">
                 Interactúa en tiempo real con simuladores clave para el futuro sostenible: Una plataforma avanzada de simulación e ingeniería enfocada en la comprensión global de la sostenibilidad. Ofrece un entorno interactivo para evaluar el equilibrio de los ecosistemas planetarios, la transformación hacia modelos de economía circular y la transición descarbonizada mediante energías renovables.
             </p>
         </div>
 
-        <!-- LADO DERECHO: TU IMAGEN ORIGINAL -->
+        <!-- IMAGEN ORIGINAL DERECHA -->
         <div class="hero-image-wrap">
             <img src="C:\Users\nicol\OneDrive\Desktop\Work_U\Ambiental\Ambiental\img\pexels-toulouse-4484344.jpg" alt="Planeta Tierra" class="hero-planet">
         </div>
     </main>
 
-    <!-- ─── SECCIÓN INFERIOR: PLANETA 3D WEBGL ─── -->
+    <!-- SECCIÓN INFERIOR: PLANETA 3D + ACORDEÓN DE MÓDULOS -->
     <section class="planet-3d-section">
         <div class="planet-3d-wrapper">
-            <canvas id="canvas"></canvas>
-            <p class="collection">
-                <a href="https://codepen.io/collection/AGZywR" target="_blank">WebGL Collection</a>
-            </p>
+            
+            <!-- CONTENEDOR DEL PLANETA 3D -->
+            <div class="canvas-container">
+                <canvas id="canvas"></canvas>
+                <p class="collection">
+                    <a href="https://codepen.io/collection/AGZywR" target="_blank">WebGL Collection</a>
+                </p>
+            </div>
+
+            <!-- MENÚ ACORDEÓN LATERAL -->
+            <div class="accordion-container">
+                <h2 class="accordion-main-title">Módulos de Simulación</h2>
+
+                <div class="accordion-wrapper">
+                    
+                    <!-- MÓDULO 1 -->
+                    <div class="accordion-item active">
+                        <button class="accordion-header">
+                            <span class="module-number">01</span>
+                            <span class="module-title">Límites Planetarios</span>
+                            <span class="accordion-icon">▼</span>
+                        </button>
+                        <div class="accordion-content">
+                            <p>
+                                límites planetarios son un marco científico que define los nueve procesos ecológicos clave que mantienen la estabilidad y habitabilidad de la Tierra. Este concepto establece un "espacio operativo seguro" dentro del cual la humanidad puede desarrollarse y prosperar sin causar daños irreversibles al medio ambiente. Actualmente, actividades humanas como la quema de combustibles fósiles, la deforestación y la contaminación industrial han provocado que rebasemos varios de estos umbrales críticos (incluyendo el cambio climático y la pérdida de biodiversidad), lo que sitúa al planeta en una zona de alto riesgo. Respetar estas fronteras es crucial para garantizar un futuro sostenible.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- MÓDULO 2 -->
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span class="module-number">02</span>
+                            <span class="module-title">Economía Circular</span>
+                            <span class="accordion-icon">▼</span>
+                        </button>
+                        <div class="accordion-content">
+                            <p>
+                                La economía circular es un modelo de producción y consumo diseñado para proteger nuestro planeta y transformar el futuro empresarial. A diferencia del viejo sistema lineal de "tomar, hacer y desechar", este enfoque propone rediseñar, reducir, reutilizar y reciclar los materiales existentes todas las veces que sea posible. Al cerrar el ciclo de vida de los productos, convertimos los residuos en materias primas de valor. Así, logramos minimizar el impacto ambiental, combatir el cambio climático y generar un crecimiento económico que respeta los límites de la naturaleza.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- MÓDULO 3 -->
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span class="module-number">03</span>
+                            <span class="module-title">Fuentes Renovables de Energía</span>
+                            <span class="accordion-icon">▼</span>
+                        </button>
+                        <div class="accordion-content">
+                            <p>
+                                Las fuentes renovables de energía son aquellos recursos naturales virtualmente inagotables que se regeneran de forma constante y limpia. A diferencia de los combustibles fósiles, la energía solar, eólica, hidráulica y biomasa aprovechan la fuerza de la naturaleza sin agotar el planeta. Su uso es la clave principal para frenar el cambio climático, reducir la contaminación ambiental y construir un modelo energético seguro, sostenible y respetuoso con las futuras generaciones.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
         </div>
     </section>
 
-    <!-- ─── PANEL DESPLEGABLE / SIMULADOR ─── -->
+    <!-- PANEL DESPLEGABLE / DRAWER -->
     <section class="drawer-panel" id="drawerPanel">
         <div class="drawer-header">
             <h2>Módulos de Simulación</h2>
