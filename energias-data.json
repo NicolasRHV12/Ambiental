@@ -5,18 +5,20 @@
         "icono": "☀️",
         "color": "#FFC107",
         "bg_color": "#FFF8E1",
-        "mecanismo": "Cuando los fotones (partículas de luz solar) inciden sobre las celdas del panel, transfieren su energía a los electrones del material semiconductor. sta energía libera los electrones de sus enlaces atómicos, creando un flujo ordenado de cargas eléctricas que genera corriente continua.  Dado que la mayoría de los electrodomésticos utilizan corriente alterna, un dispositivo llamado inversor transforma la electricidad generada para que sea utilizable en hogares, empresas o para ser inyectada a la red eléctrica.",
+        "mecanismo": "La energía solar es una fuente renovable obtenida del aprovechamiento de la radiación electromagnética (luz, calor y rayos ultravioleta) procedente del Sol.  Esta energía, generada por reacciones de fusión nuclear en el núcleo estelar, llega a la Tierra y puede transformarse en electricidad o calor mediante tecnologías específicas como paneles solares o colectores térmicos. Existen principalmente dos formas de aprovecharla: la energía solar fotovoltaica, que convierte directamente la luz en electricidad mediante células semiconductoras (generalmente de silicio), y la energía solar térmica, que utiliza la radiación para producir calor destinado a calefacción, agua caliente o generación de electricidad a gran escala mediante la concentración de rayos solares.",
         "pros": [
             "Inagotable y omnipresente a nivel global.",
             "Bajos costos de mantenimiento una vez instalada.",
             "Ideal para autoconsumo en hogares y comunidades.",
-            "No genera gases de efecto invernadero durante su operación."
+            "No genera gases de efecto invernadero durante su operación.",
+            "no genera emisiones ni ruido durante su uso"
         ],
         "contras": [
             "Intermitencia (depende del clima y el ciclo día/noche).",
             "Requiere grandes extensiones de terreno para parques masivos.",
             "Alto costo de almacenamiento en baterías de litio.",
-            "El costo de paneles, inversores y baterías suele ser elevado."
+            "El costo de paneles, inversores y baterías suele ser elevado.",
+            "El proceso de fabricación de los paneles tiene un impacto ambiental inicial negativo(uso de químicos y metales), además de desafíos futuros en su reciclaje"
         ]
     },
     {
@@ -25,16 +27,18 @@
         "icono": "🌬️",
         "color": "#2196F3",
         "bg_color": "#E3F2FD",
-        "mecanismo": "Aprovecha la energía cinético-mecánica del viento mediante las palas de un aerogenerador, haciendo girar una turbina para producir electricidad.",
+        "mecanismo": "La energía eólica es una fuente de energía renovable, limpia e inagotable que se obtiene aprovechando la energía cinética generada por el movimiento de las masas de aire (el viento). Su funcionamiento principal implica la transformación de esta energía cinética en energía eléctrica mediante el uso de aerogeneradores.  Estos dispositivos capturan el movimiento del viento en sus aspas, convierten el movimiento en energía mecánica y, a través de un generador, producen electricidad.",
         "pros": [
             "Muy alta eficiencia energética en zonas con vientos constantes.",
             "Ocupa poco espacio en el suelo en comparación con su producción.",
-            "Bajo costo de generación por megavatio."
+            "Bajo costo de generación por megavatio.",
+            "Es una fuente inagotable que no emite gases de efecto invernadero durante su operación"
         ],
         "contras": [
             "Impacto visual y sonoro en entornos cercanos.",
             "Riesgo de colisión para aves y murciélagos.",
-            "Dependiente de ráfagas de viento impredecibles."
+            "Dependiente de ráfagas de viento impredecibles.",
+            "La construcción e instalación de parques eólicos implica costos elevados"
         ]
     },
     {
@@ -43,11 +47,12 @@
         "icono": "🌊",
         "color": "#03A9F4",
         "bg_color": "#E0F7FA",
-        "mecanismo": "Utiliza la caída o corriente de grandes masas de agua para mover turbinas situadas en represas o cursos fluviales.",
+        "mecanismo": "La energía hidráulica, también conocida como energía hídrica o hidroenergía, es una fuente de energía renovable que se obtiene aprovechando la energía cinética y potencial de las corrientes, saltos de agua o masas de agua en movimiento.  Su origen radica en el ciclo hidrológico impulsado por el sol, que evapora el agua y la deposita en altitudes superiores, donde esta acumula energía potencial que se transforma en cinética al caer o fluir. Esta energía se utiliza principalmente para generar electricidad mediante centrales hidroeléctricas, donde el flujo de agua hace girar turbinas conectadas a generadores.  Además, históricamente se ha usado para aplicaciones mecánicas directas, como el accionamiento de molinos o maquinaria industrial.",
         "pros": [
             "Generación constante e inmediata (energía de base).",
             "Permite regular caudales y almacenar agua dulce.",
-            "Vida útil muy prolongada en sus instalaciones."
+            "Vida útil muy prolongada en sus instalaciones.",
+            "No presenta riesgos de accidentes tóxicos"
         ],
         "contras": [
             "Alteración severa de ecosistemas acuáticos y terrestres.",
@@ -61,16 +66,19 @@
         "icono": "🌱",
         "color": "#4CAF50",
         "bg_color": "#E8F5E9",
-        "mecanismo": "Obtiene energía mediante la combustión o digestión anaeróbica de materia orgánica (residuos agrícolas, madera o desecho urbano).",
+        "mecanismo": "La energía de biomasa es una fuente de energía renovable obtenida a partir de la combustión o transformación de materia orgánica de origen vegetal o animal.  Esta materia incluye residuos agrícolas, forestales, estiércol, aguas residuales y la fracción orgánica de los residuos sólidos urbanos, aprovechando la energía química almacenada mediante la fotosíntesis.",
         "pros": [
             "Aprovecha y reduce residuos sólidos orgánicos.",
             "Es una fuente almacenable e independiente del clima.",
-            "Carbono neutro en su ciclo biológico natural."
+            "Carbono neutro en su ciclo biológico natural.",
+            "Genera empleo local en agricultura, silvicultura y gestión de residuos."
         ],
         "contras": [
             "Emite CO2 y material particulado durante la combustión.",
             "Requiere logística de transporte y recolección.",
-            "Riesgo de deforestación si no se gestiona con sostenibilidad."
+            "Riesgo de deforestación si no se gestiona con sostenibilidad.",
+            "Tiene un menor poder calorífico que los fósiles, requiriendo grandes volúmenes de combustible.",
+            "Requiere mantenimiento riguroso para evitar emisiones tóxicas."
         ]
     },
     {
@@ -79,11 +87,13 @@
         "icono": "♨️",
         "color": "#FF9800",
         "bg_color": "#FFF3E0",
-        "mecanismo": "Extrae el calor interno del subsuelo terrestre para producir vapor que acciona turbinas eléctricas o sistemas de calefacción directa.",
+        "mecanismo": "La energía geotérmica es un recurso renovable que aprovecha el calor almacenado en el interior de la Tierra, presente en rocas, suelos y aguas subterráneas, para generar electricidad o proporcionar calefacción y refrigeración.  Su origen se debe principalmente al calor residual de la formación del planeta y a la descomposición de elementos radiactivos en la corteza. Esta energía se extrae mediante perforaciones que alcanzan depósitos de vapor o agua caliente, los cuales accionan turbinas para producir electricidad o se utilizan directamente en sistemas térmicos.",
         "pros": [
             "Disponible las 24 horas del día, los 365 días del año.",
             "Mínima huella de superficie externa.",
-            "Altamente confiable e independiente del clima."
+            "Altamente confiable e independiente del clima.",
+            "Genera muy pocas emisiones de gases de efecto invernadero y ocupa poca superficie terrestre.",
+            " Una vez instalada, es económica de mantener y proporciona ahoros energéticos a largo plazo."
         ],
         "contras": [
             "Ubicación restringida a zonas de alta actividad tectónica/volcánica.",
