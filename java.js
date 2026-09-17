@@ -69,6 +69,15 @@ startButton.addEventListener("mouseleave", function () {
     this.style.transform = "translateY(0)";
 });
 
+// REDIRECCIÓN MÓDULO LÍMITES PLANETARIOS ---
+const btnLimites = document.getElementById("btn-limites");
+if (btnLimites) {
+    btnLimites.addEventListener("click", () => {
+        window.location.href = "limites-planetarios.html"; 
+    });
+}
+// ------------------------------------------------------
+
 
 // PLANETA 3D INTERACTIVO (WEBGL)
 function App() {

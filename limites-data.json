@@ -1,0 +1,65 @@
+[
+    {
+        "id": 1,
+        "nombre": "Cambio Climático",
+        "estado": "riesgo-alto",
+        "color": "#FF5A36",
+        "descripcion": "Aumento de la concentración de CO2 en la atmósfera (superando las 350 ppm), provocando un calentamiento global acelerado."
+    },
+    {
+        "id": 2,
+        "nombre": "Integridad de la Biosfera",
+        "estado": "riesgo-alto",
+        "color": "#FF5A36",
+        "descripcion": "Pérdida masiva de biodiversidad y alteración genética, lo que debilita la resiliencia de los ecosistemas ante cambios bruscos."
+    },
+    {
+        "id": 3,
+        "nombre": "Flujos Biogeoquímicos",
+        "estado": "riesgo-alto",
+        "color": "#FF5A36",
+        "descripcion": "Alteración severa de los ciclos del nitrógeno y fósforo a nivel global, impulsada principalmente por el uso excesivo de fertilizantes agrícolas."
+    },
+    {
+        "id": 4,
+        "nombre": "Cambio en el Uso del Suelo",
+        "estado": "riesgo-alto",
+        "color": "#FF5A36",
+        "descripcion": "Deforestación descontrolada y conversión de ecosistemas naturales (especialmente bosques tropicales) en tierras de cultivo y zonas urbanas."
+    },
+    {
+        "id": 5,
+        "nombre": "Nuevas Entidades (Contaminación)",
+        "estado": "riesgo-alto",
+        "color": "#FF5A36",
+        "descripcion": "Acumulación de microplásticos, compuestos químicos sintéticos y metales pesados que los ecosistemas no tienen capacidad de procesar."
+    },
+    {
+        "id": 6,
+        "nombre": "Uso del Agua Dulce",
+        "estado": "riesgo-creciente",
+        "color": "#FFC236",
+        "descripcion": "Extracción insostenible de agua superficial y subterránea, afectando los caudales de los ríos y la humedad vital del suelo."
+    },
+    {
+        "id": 7,
+        "nombre": "Acidificación de los Océanos",
+        "estado": "riesgo-creciente",
+        "color": "#FFC236",
+        "descripcion": "Disminución del pH marino debido a la absorción de CO2, lo que dificulta la supervivencia de corales y especies con caparazones calcáreos."
+    },
+    {
+        "id": 8,
+        "nombre": "Agotamiento del Ozono",
+        "estado": "seguro",
+        "color": "#417B2B",
+        "descripcion": "Gracias a las regulaciones del Protocolo de Montreal, la capa de ozono estratosférico se está recuperando gradualmente."
+    },
+    {
+        "id": 9,
+        "nombre": "Carga de Aerosoles Atmosféricos",
+        "estado": "seguro",
+        "color": "#417B2B",
+        "descripcion": "Emisión de micropartículas contaminantes. Aunque genera graves problemas de salud regional, a nivel global aún no rebasa el límite de colapso."
+    }
+]

@@ -1,0 +1,114 @@
+/* Reseteo básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #0a0f16; /* Fondo oscuro espacial */
+    color: #ffffff;
+    overflow-x: hidden;
+}
+
+/* El fondo de partículas debe quedar detrás de todo */
+#tsparticles {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    z-index: -1;
+    top: 0;
+    left: 0;
+}
+
+/* Estilos de navegación */
+.top-nav {
+    padding: 2rem;
+    position: relative;
+    z-index: 10;
+}
+
+.back-btn {
+    color: #417B2B; /* Tono verde que usas en tu planeta WebGL */
+    text-decoration: none;
+    font-weight: bold;
+    border: 1px solid #417B2B;
+    padding: 10px 20px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+    background-color: #417B2B;
+    color: white;
+}
+
+/* Contenido principal centrado */
+.content-wrapper {
+    position: relative;
+    z-index: 10;
+    max-width: 800px;
+    margin: 5vh auto;
+    text-align: center;
+    padding: 2rem;
+    background: rgba(10, 15, 22, 0.7);
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px); /* Efecto de cristal */
+}
+
+.hero-tag {
+    color: #2080D0; /* Azul océano */
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.title {
+    font-size: 3rem;
+    margin: 10px 0;
+}
+
+.description {
+    color: #cccccc;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+.dashboard-placeholder {
+    border: 2px dashed rgba(255, 255, 255, 0.2);
+    padding: 3rem;
+    border-radius: 10px;
+    color: rgba(255, 255, 255, 0.5);
+}
+/* Estilos de la cuadrícula de límites */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 2rem;
+}
+
+.boundary-card {
+    background: rgba(0, 0, 0, 0.5);
+    border-top: 4px solid;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: left;
+    transition: transform 0.3s ease;
+}
+
+.boundary-card:hover {
+    transform: translateY(-5px);
+}
+
+.boundary-card h3 {
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+
+.boundary-card p {
+    font-size: 0.9rem;
+    color: #bbb;
+}   
