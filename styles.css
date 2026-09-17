@@ -713,3 +713,43 @@ body::before {
     text-align: center;
     padding: 12px 24px;
     }
+
+    /* BOTÓN INICIAR SIMULADOR EN EL DRAWER */
+.drawer-action-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.main-sim-btn {
+    width: 100%;
+    max-width: 420px;
+    padding: 16px 32px;
+    font-size: 18px;
+    font-weight: 700;
+    color: #0d1117;
+    background: linear-gradient(135deg, #46e6b4, #2080d0);
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    box-shadow: 0 8px 25px rgba(70, 230, 180, 0.3);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.main-sim-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(70, 230, 180, 0.45);
+}
+
+.sim-btn-arrow {
+    font-size: 20px;
+    transition: transform 0.25s ease;
+}
+
+.main-sim-btn:hover .sim-btn-arrow {
+    transform: translateX(5px);
+}

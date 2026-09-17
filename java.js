@@ -287,4 +287,19 @@ function getFibonacciSpherePoints(samples, radius) {
     return points;
 }
 
+const btnEnergias = document.getElementById("btn-energias");
+if (btnEnergias) {
+    btnEnergias.addEventListener("click", () => {
+        window.location.href = "energias.html";
+    });
+}
+
+// REDIRECCIÓN BOTÓN PRINCIPAL DEL SIMULADOR
+const mainSimBtn = document.getElementById("mainSimBtn");
+if (mainSimBtn) {
+    mainSimBtn.addEventListener("click", () => {
+        window.location.href = "simulador.html";
+    });
+}
+
 window.addEventListener('DOMContentLoaded', App);

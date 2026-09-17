@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Energías Renovables - Bionova</title>
+    <link rel="stylesheet" href="energias-styles.css">
+</head>
+<body>
+    <div id="tsparticles"></div>
+
+    <nav class="top-nav">
+        <a href="index.html" class="back-btn">← Volver al Simulador</a>
+    </nav>
+
+    <main class="content-wrapper">
+        <span class="hero-tag">Módulo 03</span>
+        <h1 class="title">Energías Renovables</h1>
+        <p class="description">
+            Selecciona una fuente de energía para conocer su funcionamiento interno, ventajas y limitaciones tecnológicas.
+        </p>
+
+        <!-- Barra de botones redondos inspirados en el diseño -->
+        <div class="energy-selector-container" id="energy-buttons">
+            <!-- Se llenan dinámicamente desde JS -->
+        </div>
+
+        <!-- Tarjeta donde se muestra el detalle de la opción seleccionada -->
+        <div class="energy-detail-card" id="detail-card">
+            <h2 id="energy-title" class="detail-title">Selecciona una energía</h2>
+            <p id="energy-mechanism" class="detail-description">Presiona cualquiera de los botones superiores para desplegar la información.</p>
+            
+            <div class="pros-cons-grid">
+                <div class="info-box pros">
+                    <h3>Ventajas / Pros</h3>
+                    <ul id="energy-pros"></ul>
+                </div>
+                <div class="info-box contras">
+                    <h3>Desventajas / Contras</h3>
+                    <ul id="energy-contras"></ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
+    <script src="energias-java.js"></script>
+</body>
+</html>
