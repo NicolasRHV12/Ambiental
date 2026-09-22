@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bionova - Energías Renovables y Límites Planetarios</title>
+    <title>Bionova - Energías Renovables y Riesgos</title>
     <link rel="stylesheet" href="energias-styles.css">
 </head>
 <body>
@@ -49,22 +49,81 @@
             </div>
         </section>
 
+        <br>
+        <br>
+        <br>
+        <br>
+        
         <!-- DIVISOR CON EL MISMO ESPACIADO INTERNO -->
         <div class="section-divider"></div>
-<br>
-<br>
-<br>
-        <!-- MÓDULO 01: LÍMITES PLANETARIOS -->
+
+        <!-- MÓDULO: RIESGOS ENERGÍAS RENOVABLES -->
         <section class="module-section">
-            <span class="hero-tag hero-tag-alt">Módulo 01</span>
-            <h1 class="title">Límites Planetarios</h1>
+            <span class="hero-tag hero-tag-alt">Riesgos</span>
+            <h1 class="title">Riesgos - Energías Renovables</h1>
             <p class="description">
-                Monitoreo en tiempo real de los 9 procesos ecológicos clave. Interactúa con el fondo para visualizar las conexiones sistémicas de la Tierra.
+                Evaluación de las limitaciones técnicas, impactos ambientales indirectos y desafíos de integración asociados a la adopción masiva de fuentes limpias.
             </p>
             
-            <!-- Rejilla para los límites planetarios -->
+            <!-- Rejilla para las tarjetas de riesgos -->
             <div id="boundaries-grid" class="grid-container">
-                <!-- Se llena dinámicamente desde JS -->
+                
+                <!-- Tarjeta 1 -->
+                <div class="boundary-card alto">
+                    <h3>Intermitencia e Inestabilidad</h3>
+                    <div class="status">Estado: riesgo alto</div>
+                    <p>La variabilidad climática (falta de sol o viento) genera fluctuaciones severas en la red eléctrica, requiriendo respaldo térmico o baterías masivas.</p>
+                </div>
+
+                <!-- Tarjeta 2 -->
+                <div class="boundary-card alto">
+                    <h3>Minerales y Tierras Raras</h3>
+                    <div class="status">Estado: riesgo alto</div>
+                    <p>Alta dependencia de la extracción intensiva de litio, cobalto y neodimio, generando impactos ecológicos y vulnerabilidades geopolíticas.</p>
+                </div>
+
+                <!-- Tarjeta 3 -->
+                <div class="boundary-card creciente">
+                    <h3>Uso y Fragmentación del Suelo</h3>
+                    <div class="status">Estado: riesgo creciente</div>
+                    <p>Grandes parques solares y eólicos requieren amplias extensiones de tierra, provocando la pérdida de hábitats y alteración de ecosistemas.</p>
+                </div>
+
+                <!-- Tarjeta 4 -->
+                <div class="boundary-card creciente">
+                    <h3>Gestión de Desechos</h3>
+                    <div class="status">Estado: riesgo creciente</div>
+                    <p>Falta de infraestructura global para el reciclaje masivo de palas de aerogeneradores y paneles fotovoltaicos al final de su vida útil.</p>
+                </div>
+
+                <!-- Tarjeta 5 -->
+                <div class="boundary-card creciente">
+                    <h3>Infraestructura de Red</h3>
+                    <div class="status">Estado: riesgo creciente</div>
+                    <p>La ubicación remota de las fuentes renovables exige inversiones astronómicas en nuevas líneas de transmisión eléctrica de alta tensión.</p>
+                </div>
+
+                <!-- Tarjeta 6 -->
+                <div class="boundary-card creciente">
+                    <h3>Alteración Hidrológica</h3>
+                    <div class="status">Estado: riesgo creciente</div>
+                    <p>Las mega represas hidroeléctricas alteran el caudal de los ríos, afectan la biodiversidad acuática y pueden desplazar comunidades.</p>
+                </div>
+
+                <!-- Tarjeta 7 -->
+                <div class="boundary-card seguro">
+                    <h3>Impacto en Fauna Silvestre</h3>
+                    <div class="status">Estado: seguro</div>
+                    <p>Riesgo de colisión de aves y murciélagos con palas eólicas, mitigado mediante paradas programadas y sistemas de detección acústica.</p>
+                </div>
+
+                <!-- Tarjeta 8 -->
+                <div class="boundary-card seguro">
+                    <h3>Fugas y Fluidos Térmicos</h3>
+                    <div class="status">Estado: seguro</div>
+                    <p>Manejo de sustancias químicas y aceites en centrales geotérmicas y termosolares bajo estrictos protocolos de contención ambiental.</p>
+                </div>
+
             </div>
         </section>
 
@@ -73,6 +132,5 @@
     <!-- Scripts de partículas y lógica JS -->
     <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
     <script src="energias-java.js"></script>
-    <script src="limites-java.js"></script>
 </body>
 </html>

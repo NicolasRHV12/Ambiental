@@ -88,7 +88,7 @@ if (btnEconomia) {
 const btnEnergias = document.getElementById("btn-energias");
 if (btnEnergias) {
     btnEnergias.addEventListener("click", () => {
-        window.location.href = "limites-planetarios.html";
+        window.location.href = "energias.html";
     });
 }
 

@@ -1,5 +1,68 @@
 
-// Configuración de la red interactiva con tsParticles
+document.addEventListener("DOMContentLoaded", async () => {
+    try {
+        const response = await fetch("limitesdata.json");
+        const limitesData = await response.json();
+
+        const buttonsContainer = document.getElementById("energy-buttons");
+
+        const titleEl = document.getElementById("energy-title");
+        const mechanismEl = document.getElementById("energy-mechanism");
+        const prosEl = document.getElementById("energy-pros");
+        const contrasEl = document.getElementById("energy-contras");
+
+        if (!buttonsContainer) return;
+
+        buttonsContainer.innerHTML = "";
+
+        limitesData.forEach((item, index) => {
+            const wrapper = document.createElement("div");
+            wrapper.className = `energy-btn-wrapper ${index === 0 ? "active" : ""}`;
+            wrapper.dataset.id = item.id;
+
+            wrapper.innerHTML = `
+                <div class="energy-circle-btn" style="background-color: ${item.bg_color}; display: flex; align-items: center; justify-content: center; width: 80px; height: 80px; border-radius: 50%; cursor: pointer;">
+                    <span style="font-size: 32px;">${item.icono}</span>
+                </div>
+                <span class="energy-label">${item.nombre}</span>
+            `;
+
+            wrapper.addEventListener("click", () => {
+                document.querySelectorAll(".energy-btn-wrapper").forEach(w => w.classList.remove("active"));
+                wrapper.classList.add("active");
+                mostrarDetalle(item);
+            });
+
+            buttonsContainer.appendChild(wrapper);
+        });
+
+        if (limitesData.length > 0) {
+            mostrarDetalle(limitesData[0]);
+        }
+
+        function mostrarDetalle(data) {
+            if (titleEl) {
+                titleEl.textContent = data.nombre;
+            }
+            
+            if (mechanismEl) {
+                mechanismEl.textContent = data.mecanismo;
+            }
+
+            if (prosEl) {
+                prosEl.innerHTML = data.pros.map(pro => `<li>${pro}</li>`).join("");
+            }
+
+            if (contrasEl) {
+                contrasEl.innerHTML = data.contras.map(contra => `<li>${contra}</li>`).join("");
+            }
+        }
+
+    } catch (error) {
+        console.error("Error al cargar los datos de limitesdata.json:", error);
+    }
+});
+
 tsParticles.load("tsparticles", {
     fpsLimit: 60,
     interactivity: {

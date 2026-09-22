@@ -1,0 +1,92 @@
+[
+  {
+    "id": "cambio-climatico",
+    "nombre": "Cambio Climático",
+    "icono": "🌡️",
+    "color": "#FF5252",
+    "bg_color": "#FFF0F0",
+    "mecanismo": "Regula la temperatura global y los patrones meteorológicos del planeta a través de la concentración de gases de efecto invernadero (como el CO2 y el metano) en la atmósfera.",
+    "pros": [
+      "Mitigación acelerada mediante el despliegue masivo de energías renovables.",
+      "Aumento en la eficiencia energética global e innovación tecnológica.",
+      "Fortalecimiento de políticas de restauración y protección forestal."
+    ],
+    "contras": [
+      "Aumento acelerado de la temperatura media global por encima de 1.5°C.",
+      "Acidificación y elevación paulatina del nivel del mar por descongelamiento.",
+      "Incremento en la frecuencia e intensidad de sequías y huracanes."
+    ]
+  },
+  {
+    "id": "biodiversidad",
+    "nombre": "Biodiversidad",
+    "icono": "🍃",
+    "color": "#4CAF50",
+    "bg_color": "#E8F5E9",
+    "mecanismo": "Mantiene la estabilidad, resiliencia y funcionalidad de los ecosistemas mediante la variedad de especies biológicas y su diversidad genética.",
+    "pros": [
+      "Garantiza servicios ecosistémicos vitales como la polinización de cultivos.",
+      "Sostiene la resiliencia natural de los ecosistemas ante plagas y cambios.",
+      "Proporciona la base biológica para alimentos, agua limpia y medicinas."
+    ],
+    "contras": [
+      "Tasa masiva y acelerada de extinción de especies silvestres.",
+      "Destrucción irrecuperable de variabilidad genética en la biósfera.",
+      "Severa fragmentación de hábitats naturales y corredores biológicos."
+    ]
+  },
+  {
+    "id": "uso-del-suelo",
+    "nombre": "Uso del Suelo",
+    "icono": "🌱",
+    "color": "#8D6E63",
+    "bg_color": "#F3EFEA",
+    "mecanismo": "Involucra la conversión de bosques, humedales y vegetación nativa en áreas para la agricultura intensiva, ganadería y expansión urbana.",
+    "pros": [
+      "Optimización agrícola mediante prácticas de labranza mínima.",
+      "Planificación urbana sostenible para detener el crecimiento desmedido.",
+      "Restauración activa de suelos degradados y reforestación."
+    ],
+    "contras": [
+      "Deforestación masiva de bosques tropicales y pérdida de biomasa.",
+      "Degradación acelerada, erosión y desertificación de suelos fértiles.",
+      "Pérdida drástica de la capacidad terrestre para almacenar carbono."
+    ]
+  },
+  {
+    "id": "agua-dulce",
+    "nombre": "Agua Dulce",
+    "icono": "💧",
+    "color": "#29B6F6",
+    "bg_color": "#E1F5FE",
+    "mecanismo": "Abarca la extracción y alteración de los flujos de agua en ríos, lagos y acuíferos subterráneos indispensables para la vida y el consumo.",
+    "pros": [
+      "Implementación de agricultura de riego por goteo de alta eficiencia.",
+      "Tratamiento, recolección y reutilización circular de aguas residuales.",
+      "Protección activa de cuencas e infraestructuras naturales de captación."
+    ],
+    "contras": [
+      "Agotamiento acelerado de acuíferos subterráneos no renovables.",
+      "Desecación de ríos de gran caudal y alteración de ecosistemas lénticos.",
+      "Estrés hídrico severo que amenaza el abastecimiento de poblaciones."
+    ]
+  },
+  {
+    "id": "ciclos-biogeoquimicos",
+    "nombre": "Ciclos biogeoquímicos",
+    "icono": "⚛️",
+    "color": "#AB47BC",
+    "bg_color": "#F3E5F5",
+    "mecanismo": "Mide el impacto de la introducción masiva de nitrógeno y fósforo sintéticos en el medio ambiente por el uso excesivo de fertilizantes agrícolas.",
+    "pros": [
+      "Adopción de biofertilizantes y técnicas de agricultura de precisión.",
+      "Fijación biológica natural mediante rotación sustentable de cultivos.",
+      "Recuperación y reciclaje eficiente de fósforo en aguas servidas."
+    ],
+    "contras": [
+      "Eutrofización masiva de lagos, embalses y zonas costeras.",
+      "Proliferación de 'zonas muertas' marinas desprovistas de oxígeno.",
+      "Contaminación de mantos freáticos de consumo por nitratos tóxicos."
+    ]
+  }
+]
