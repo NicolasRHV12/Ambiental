@@ -68,27 +68,27 @@
 
     </header>
 
-   <!-- SECCIÓN PRINCIPAL (HERO) -->
-<section class="hero-section" id="seccion-inicio">
-    <main class="hero-container">
-        <div class="hero-card">
-            <span class="hero-tag">Plataforma Interactiva y Dinámica</span>
-            <h1 class="hero-title">Explora el Equilibrio Planetario y el Futuro Sostenible</h1>
-            <p class="hero-description">
-                Interactúa en tiempo real con simuladores clave para el futuro sostenible: Una plataforma avanzada de simulación e ingeniería enfocada en la comprensión global de la sostenibilidad. Ofrece un entorno interactivo para evaluar el equilibrio de los ecosistemas planetarios, la transformación hacia modelos de economía circular y la transición descarbonizada mediante energías renovables.
-            </p>
-        </div>
+    <!-- SECCIÓN PRINCIPAL (HERO) -->
+    <section class="hero-section" id="seccion-inicio">
+        <main class="hero-container">
+            <div class="hero-card">
+                <span class="hero-tag">Plataforma Interactiva y Dinámica</span>
+                <h1 class="hero-title">Explora el Equilibrio Planetario y el Futuro Sostenible</h1>
+                <p class="hero-description">
+                    Interactúa en tiempo real con simuladores clave para el futuro sostenible: Una plataforma avanzada de simulación e ingeniería enfocada en la comprensión global de la sostenibilidad. Ofrece un entorno interactivo para evaluar el equilibrio de los ecosistemas planetarios, la transformación hacia modelos de economía circular y la transición descarbonizada mediante energías renovables.
+                </p>
+            </div>
 
-        <!-- IMAGEN ORIGINAL DERECHA -->
-        <div class="hero-image-wrap">
-            <img src="img/pexels-toulouse-4484344.jpg" alt="Planeta Tierra" class="hero-planet">
-        </div>
-    </main>
-</section>
+            <!-- IMAGEN DERECHA -->
+            <div class="hero-image-wrap">
+                <img src="img/pexels-toulouse-4484344.jpg" alt="Planeta Tierra" class="hero-planet">
+            </div>
+        </main>
+    </section>
 
     <!-- SECCIÓN INFERIOR: PLANETA 3D + ACORDEÓN DE MÓDULOS -->
-<section class="planet-3d-section" id="seccion-temas">
-            <div class="planet-3d-wrapper">
+    <section class="planet-3d-section" id="seccion-temas">
+        <div class="planet-3d-wrapper">
             
             <!-- CONTENEDOR DEL PLANETA 3D -->
             <div class="canvas-container">
@@ -113,7 +113,7 @@
                         </button>
                         <div class="accordion-content">
                             <p>
-                                límites planetarios son un marco científico que define los nueve procesos ecológicos clave que mantienen la estabilidad y habitabilidad de la Tierra. Este concepto establece un "espacio operativo seguro" dentro del cual la humanidad puede desarrollarse y prosperar sin causar daños irreversibles al medio ambiente. Actualmente, actividades humanas como la quema de combustibles fósiles, la deforestación y la contaminación industrial han provocado que rebasemos varios de estos umbrales críticos (incluyendo el cambio climático y la pérdida de biodiversidad), lo que sitúa al planeta en una zona de alto riesgo. Respetar estas fronteras es crucial para garantizar un futuro sostenible.
+                                Los límites planetarios son un marco científico que define los nueve procesos ecológicos clave que mantienen la estabilidad y habitabilidad de la Tierra. Este concepto establece un "espacio operativo seguro" dentro del cual la humanidad puede desarrollarse y prosperar sin causar daños irreversibles al medio ambiente.
                             </p>
                         </div>
                     </div>
@@ -127,7 +127,7 @@
                         </button>
                         <div class="accordion-content">
                             <p>
-                                La economía circular es un modelo de producción y consumo diseñado para proteger nuestro planeta y transformar el futuro empresarial. A diferencia del viejo sistema lineal de "tomar, hacer y desechar", este enfoque propone rediseñar, reducir, reutilizar y reciclar los materiales existentes todas las veces que sea posible. Al cerrar el ciclo de vida de los productos, convertimos los residuos en materias primas de valor. Así, logramos minimizar el impacto ambiental, combatir el cambio climático y generar un crecimiento económico que respeta los límites de la naturaleza.
+                                La economía circular es un modelo de producción y consumo diseñado para proteger nuestro planeta y transformar el futuro empresarial. A diferencia del viejo sistema lineal de "tomar, hacer y desechar", este enfoque propone rediseñar, reducir, reutilizar y reciclar los materiales existentes.
                             </p>
                         </div>
                     </div>
@@ -141,7 +141,7 @@
                         </button>
                         <div class="accordion-content">
                             <p>
-                                Las fuentes renovables de energía son aquellos recursos naturales virtualmente inagotables que se regeneran de forma constante y limpia. A diferencia de los combustibles fósiles, la energía solar, eólica, hidráulica y biomasa aprovechan la fuerza de la naturaleza sin agotar el planeta. Su uso es la clave principal para frenar el cambio climático, reducir la contaminación ambiental y construir un modelo energético seguro, sostenible y respetuoso con las futuras generaciones.
+                                Las fuentes renovables de energía son aquellos recursos naturales virtualmente inagotables que se regeneran de forma constante y limpia. La energía solar, eólica, hidráulica y biomasa aprovechan la fuerza de la naturaleza para construir un modelo energético sostenible.
                             </p>
                         </div>
                     </div>
@@ -152,7 +152,7 @@
         </div>
     </section>
 
-    <!-- PANEL DESPLEGABLE / DRAWER -->
+    <!-- PANEL DESPLEGABLE / DRAWER SELECCIÓN DE MÓDULOS -->
     <section class="drawer-panel" id="drawerPanel">
         <div class="drawer-header">
             <h2>Módulos de Simulación</h2>
@@ -161,30 +161,28 @@
         <div class="drawer-content">
             <p>Selecciona un módulo para interactuar con los indicadores ambientales:</p>
             <div class="drawer-grid">
-            <div class="drawer-card" id="btn-limites" style="cursor: pointer;">
-                <h3>1. Límites Planetarios</h3>
-                <p>Monitorea los 9 indicadores ecológicos globales.</p>
-            </div>
-            <div class="drawer-card" id="btn-economia" style="cursor: pointer;">
-                <h3>2. Economía Circular</h3>
-                <p>Compara modelos lineales vs. circulares de producción.</p>
-            </div>
-            <div class="drawer-card" id="btn-energias" style="cursor: pointer;">
-                <h3>3. Energías Renovables</h3>
-                <p>Modela la matriz energética y reduce emisiones de CO₂.</p>
+                <div class="drawer-card active" id="btn-limites" style="cursor: pointer;">
+                    <h3>1. Límites Planetarios</h3>
+                    <p>Monitorea los 9 indicadores ecológicos globales.</p>
+                </div>
+                <div class="drawer-card" id="btn-economia" style="cursor: pointer;">
+                    <h3>2. Economía Circular</h3>
+                    <p>Compara modelos lineales vs. circulares de producción.</p>
+                </div>
+                <div class="drawer-card" id="btn-energias" style="cursor: pointer;">
+                    <h3>3. Energías Renovables</h3>
+                    <p>Modela la matriz energética y reduce emisiones de CO₂.</p>
                 </div>
             </div>
         </div>
 
-        <!-- BOTÓN GRANDE PRINCIPAL -->
-            <div class="drawer-action-container">
-                <button class="main-sim-btn" id="mainSimBtn">
-                    <span>Iniciar simulador</span>
-                    <span class="sim-btn-arrow">➔</span>
-                </button>
-            </div>
+        <!-- BOTÓN PRINCIPAL DE INICIO -->
+        <div class="drawer-action-container">
+            <button class="main-sim-btn" id="mainSimBtn">
+                <span>Iniciar simulador</span>
+                <span class="sim-btn-arrow">➔</span>
+            </button>
         </div>
-    </section>
     </section>
 
     <!-- SECCIÓN ACERCA DE -->
@@ -195,14 +193,12 @@
             <p class="about-description">Nuestro objetivo es diseñar una experiencia interactiva mediante una plataforma web para fortalecer el aprendizaje conceptual sobre economía circular, energías renovables y límites planetarios en estudiantes de la Universidad Autónoma de Occidente.</p>
 
             <div class="about-grid">
-                
                 <div class="about-info-item">
                     <h3>INTEGRANTES</h3>
                     <p>Pablo Morales</p>
                     <p>Nicolás Rojas</p>
                     <p>Sebastian Quijano</p>
                     <p>Juan Esteban Quintero</p>
-
                 </div>
 
                 <div class="about-info-item">
@@ -219,6 +215,7 @@
         </div>
     </section>
 
+    <!-- SCRIPT PRINCIPAL -->
     <script src="java.js"></script>
 </body>
 
