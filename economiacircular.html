@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bionova - Energías Renovables y Límites Planetarios</title>
+    <title>Bionova - Economía Circular y Riesgos</title>
     <link rel="stylesheet" href="limites-styles.css">
 </head>
 <body>
@@ -18,22 +18,22 @@
     <!-- CONTENEDOR PRINCIPAL UNIFICADO -->
     <main class="content-wrapper">
         
-        <!-- MÓDULO 03: ENERGÍAS RENOVABLES (ARRIBA) -->
+        <!-- MÓDULO 02: ECONOMÍA CIRCULAR (ARRIBA) -->
         <section class="module-section">
-            <span class="hero-tag">Módulo 03</span>
-            <h1 class="title">Energías Renovables</h1>
+            <span class="hero-tag">Módulo 02</span>
+            <h1 class="title">Economía Circular</h1>
             <p class="description">
-                Selecciona una fuente de energía para conocer su funcionamiento interno, ventajas y limitaciones tecnológicas.
+                Selecciona una etapa del ciclo para conocer su impacto, estrategias de optimización y beneficios en la cadena de valor.
             </p>
 
             <!-- Selector de botones redondos -->
             <div class="energy-selector-container" id="energy-buttons">
-                <!-- Se llena dinámicamente desde JS -->
+                <!-- Se llena dinámicamente desde economia-java.js -->
             </div>
 
             <!-- Tarjeta de detalle -->
             <div class="energy-detail-card" id="detail-card">
-                <h2 id="energy-title" class="detail-title">Selecciona una energía</h2>
+                <h2 id="energy-title" class="detail-title">Selecciona una etapa</h2>
                 <p id="energy-mechanism" class="detail-description">Presiona cualquiera de los botones superiores para desplegar la información.</p>
                 
                 <div class="pros-cons-grid">
@@ -52,26 +52,24 @@
         <!-- DIVISOR FLUIDO -->
         <div class="section-divider"></div>
 
-        <!-- MÓDULO 01: LÍMITES PLANETARIOS (ABAJO) -->
+        <!-- MÓDULO RIESGOS: ECONOMÍA CIRCULAR (ABAJO) -->
         <section class="module-section">
-            <span class="hero-tag hero-tag-alt">Módulo 01</span>
-            <h1 class="title">Límites Planetarios</h1>
+            <span class="hero-tag hero-tag-alt">RIESGOS</span>
+            <h1 class="title">Riesgos - Economía Circular</h1>
             <p class="description">
-                Monitoreo en tiempo real de los 9 procesos ecológicos clave. Interactúa con el fondo para visualizar las conexiones sistémicas de la Tierra.
+                Evaluación de cuellos de botella y vulnerabilidades críticas en la transición circular. Explora los factores de riesgo desde las amenazas más severas hasta los escenarios más seguros.
             </p>
             
-            <!-- Rejilla para los límites planetarios -->
+            <!-- Rejilla para las tarjetas de riesgo -->
             <div id="boundaries-grid" class="grid-container">
-                <!-- Se llena dinámicamente desde JS -->
+                <!-- Se llena dinámicamente desde economia-java.js -->
             </div>
         </section>
 
     </main>
 
-    <!-- Scripts de partículas y lógica JS -->
+    <!-- Scripts de partículas y lógica JS unificada -->
     <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
-    <script src="energias-java.js"></script>
-    <script src="limites-java.js"></script>
     <script src="economia-java.js"></script>
 </body>
 </html>
