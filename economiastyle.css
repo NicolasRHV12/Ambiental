@@ -1,4 +1,6 @@
-/* Reseteo Global */
+/* ==================================================
+   RESETEO GLOBAL Y BASE
+   ================================================== */
 * {
     margin: 0;
     padding: 0;
@@ -10,7 +12,13 @@ body {
     background-color: #0a0f16;
     color: #ffffff;
     overflow-x: hidden;
+    transition: background-color 1.5s ease !important; /* Transición suave del ecosistema */
 }
+
+/* Colores de fondo según el estado del ecosistema (Riesgos) */
+body.estado-seguro { background-color: #0a1610; }
+body.estado-creciente { background-color: #2b1f0c; }
+body.estado-alto { background-color: #1a0808; }
 
 /* Fondo interactivo fijo */
 #tsparticles {
@@ -22,7 +30,9 @@ body {
     left: 0;
 }
 
-/* Navegación */
+/* ==================================================
+   NAVEGACIÓN Y CONTENEDORES
+   ================================================== */
 .top-nav {
     padding: 2rem 2rem 0 2rem;
     position: relative;
@@ -45,7 +55,6 @@ body {
     color: #0d1117;
 }
 
-/* Tarjeta Única Unificada */
 .content-wrapper {
     position: relative;
     z-index: 10;
@@ -64,13 +73,13 @@ body {
     width: 100%;
 }
 
-/* Separador elegante entre módulos */
 .section-divider {
     height: 1px;
     background: rgba(255, 255, 255, 0.1);
     margin: 3.5rem 0;
 }
 
+/* Textos base */
 .hero-tag {
     color: #46e6b4;
     font-size: 0.9rem;
@@ -93,65 +102,9 @@ body {
     line-height: 1.6;
 }
 
-/* --------------------------------------------------
-   MÓDULO 01: LÍMITES PLANETARIOS
-   -------------------------------------------------- */
-
-.grid-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px;
-    margin-top: 2rem;
-}
-
-.boundary-card {
-    background: rgba(0, 0, 0, 0.4);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-top: 4px solid #FF5A36;
-    padding: 20px;
-    border-radius: 12px;
-    text-align: left;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.boundary-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
-}
-
-.boundary-card h3 {
-    margin-bottom: 8px;
-    font-size: 1.2rem;
-    color: #FF5A36;
-}
-
-.boundary-card .status {
-    font-size: 0.85rem;
-    font-weight: 600;
-    margin-bottom: 10px;
-    color: #ffffff;
-}
-
-.boundary-card p {
-    font-size: 0.88rem;
-    color: #bbb;
-    line-height: 1.4;
-}
-
-/* Variaciones de color según riesgo */
-.boundary-card.alto { border-top-color: #FF5A36; }
-.boundary-card.alto h3 { color: #FF5A36; }
-
-.boundary-card.creciente { border-top-color: #FFB300; }
-.boundary-card.creciente h3 { color: #FFB300; }
-
-.boundary-card.seguro { border-top-color: #4CAF50; }
-.boundary-card.seguro h3 { color: #81C784; }
-
-/* --------------------------------------------------
-   MÓDULO 03: ENERGÍAS RENOVABLES
-   -------------------------------------------------- */
-
+/* ==================================================
+   MÓDULO 02: ECONOMÍA CIRCULAR (BOTONES SUPERIORES)
+   ================================================== */
 .energy-selector-container {
     display: flex;
     justify-content: center;
@@ -229,27 +182,12 @@ body {
     background: rgba(255, 255, 255, 0.03);
 }
 
-.info-box.pros {
-    border-left: 4px solid #4CAF50;
-}
-
-.info-box.contras {
-    border-left: 4px solid #FF5A36;
-}
-
-.info-box h3 {
-    margin-bottom: 12px;
-    font-size: 1.1rem;
-}
-
+.info-box.pros { border-left: 4px solid #4CAF50; }
+.info-box.contras { border-left: 4px solid #FF5A36; }
+.info-box h3 { margin-bottom: 12px; font-size: 1.1rem; }
 .info-box.pros h3 { color: #81C784; }
 .info-box.contras h3 { color: #FF8A65; }
-
-.info-box ul {
-    list-style-type: none;
-    padding-left: 0;
-}
-
+.info-box ul { list-style-type: none; padding-left: 0; }
 .info-box li {
     font-size: 0.9rem;
     color: #cccccc;
@@ -258,17 +196,471 @@ body {
     padding-left: 18px;
     line-height: 1.4;
 }
+.info-box.pros li::before { content: "✓"; position: absolute; left: 0; color: #4CAF50; }
+.info-box.contras li::before { content: "✕"; position: absolute; left: 0; color: #FF5A36; }
 
-.info-box.pros li::before {
-    content: "✓";
-    position: absolute;
-    left: 0;
-    color: #4CAF50;
+/* ==================================================
+   SIMULADOR HOLOGRÁFICO Y ÓRBITAS
+   ================================================== */
+.holo-btn {
+    background-color: #0a0f16 !important; 
+    border: 2px solid #46e6b4;
+    color: #46e6b4;
+    padding: 12px 25px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: block;
+    margin: 0 auto 25px auto;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    box-shadow: 0 0 15px rgba(70, 230, 180, 0.2);
+    -webkit-appearance: none !important;
+    appearance: none !important;
+    outline: none;
 }
 
-.info-box.contras li::before {
-    content: "✕";
+.holo-btn:hover {
+    background-color: #46e6b4 !important;
+    color: #0a0f16 !important;
+    box-shadow: 0 0 25px rgba(70, 230, 180, 0.6);
+}
+
+.holo-world {
+    width: 100%;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.8s ease-in-out, opacity 0.6s ease, margin 0.4s ease;
+    background: radial-gradient(circle at center, rgba(30, 50, 40, 0.6) 0%, rgba(10, 15, 22, 0.9) 100%);
+    border-radius: 16px;
+    border: 1px solid transparent;
+}
+
+.holo-world.active {
+    max-height: 400px;
+    opacity: 1;
+    margin-bottom: 30px;
+    border: 1px solid rgba(70, 230, 180, 0.5);
+    box-shadow: inset 0 0 40px rgba(70, 230, 180, 0.15);
+    padding: 25px;
+}
+
+.holo-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+/* Elementos visuales del holograma */
+.holo-visual {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.holo-ring {
     position: absolute;
-    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 2px dashed;
+    animation: spinRing 15s linear infinite;
+    opacity: 0.6;
+}
+
+.holo-ring-inner {
+    position: absolute;
+    width: 70%;
+    height: 70%;
+    border-radius: 50%;
+    border: 2px solid;
+    border-top-color: transparent !important;
+    border-bottom-color: transparent !important;
+    animation: spinRingReverse 8s linear infinite;
+}
+
+.holo-globe-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 5;
+}
+
+.holo-planet {
+    font-size: 4.5rem;
+    z-index: 10;
+    animation: gentleFloat 4s ease-in-out infinite;
+    filter: drop-shadow(0 0 20px rgba(70, 230, 180, 0.4));
+}
+
+.impact-orbit {
+    position: absolute;
+    width: 130%;
+    height: 130%;
+    border-radius: 50%;
+    animation: orbitSpin linear infinite;
+    z-index: 15;
+}
+
+.impact-item {
+    position: absolute;
+    font-size: 1.5rem;
+    background: rgba(10, 15, 22, 0.8);
+    border-radius: 50%;
+    padding: 5px;
+    box-shadow: 0 0 10px currentColor;
+}
+
+/* Posiciones de órbita */
+.pos-top { top: -15px; left: 50%; transform: translateX(-50%); }
+.pos-bottom { bottom: -15px; left: 50%; transform: translateX(-50%); }
+.pos-left { left: -15px; top: 50%; transform: translateY(-50%); }
+.pos-right { right: -15px; top: 50%; transform: translateY(-50%); }
+
+/* Métricas del simulador */
+.holo-metrics {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.metric-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: #e0e0e0;
+}
+
+.metric-bar-bg {
+    width: 100%;
+    height: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    overflow: hidden;
+    position: relative;
+}
+
+.metric-bar-fill {
+    height: 100%;
+    width: 0%;
+    border-radius: 5px;
+    transition: width 1.5s cubic-bezier(0.1, 0.8, 0.2, 1);
+    box-shadow: 0 0 10px currentColor;
+}
+
+/* ==================================================
+   MÓDULO RIESGOS (CUADRÍCULA Y TARJETAS)
+   ================================================== */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin-top: 2rem;
+}
+
+.boundary-card {
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-top: 4px solid #FF5A36;
+    padding: 20px;
+    border-radius: 12px;
+    text-align: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer; /* Indicar interactividad */
+}
+
+.boundary-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+}
+
+.boundary-card h3 {
+    margin-bottom: 8px;
+    font-size: 1.2rem;
     color: #FF5A36;
+}
+
+.boundary-card .status {
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #ffffff;
+}
+
+.boundary-card p {
+    font-size: 0.88rem;
+    color: #bbb;
+    line-height: 1.4;
+}
+
+/* Variaciones de color de riesgos */
+.boundary-card.alto { border-top-color: #FF5A36; }
+.boundary-card.alto h3 { color: #FF5A36; }
+.boundary-card.creciente { border-top-color: #FFB300; }
+.boundary-card.creciente h3 { color: #FFB300; }
+.boundary-card.seguro { border-top-color: #4CAF50; }
+.boundary-card.seguro h3 { color: #81C784; }
+
+/* Animación cuando se hace clic en un riesgo alto */
+.boundary-card.alerta {
+    animation: colapso 0.5s;
+    border-top-color: #FF5A36 !important;
+    box-shadow: 0 0 25px rgba(255, 90, 54, 0.8) !important;
+}
+
+/* ==================================================
+   ANIMACIONES GLOBALES (@keyframes)
+   ================================================== */
+@keyframes spinRing { 100% { transform: rotate(360deg); } }
+@keyframes spinRingReverse { 100% { transform: rotate(-360deg); } }
+@keyframes gentleFloat { 
+    0%, 100% { transform: translateY(0) scale(1); } 
+    50% { transform: translateY(-8px) scale(1.05); } 
+}
+@keyframes orbitSpin { 
+    0% { transform: rotate(0deg); } 
+    100% { transform: rotate(360deg); } 
+}
+@keyframes colapso {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    100% { transform: translate(0px, 0px) rotate(0deg); }
+}
+
+/* ==================================================
+   CONSTRUCTOR DE CICLOS (SANDBOX)
+   ================================================== */
+.sandbox-container {
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px dashed rgba(70, 230, 180, 0.4);
+    border-radius: 16px;
+    padding: 25px;
+    margin-bottom: 30px;
+    text-align: center;
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+}
+
+.cycle-track {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 15px;
+    min-height: 70px;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 12px;
+    padding: 15px;
+    border: 1px solid rgba(255,255,255,0.05);
+}
+
+.empty-track-msg {
+    color: #666;
+    font-style: italic;
+    width: 100%;
+    text-align: center;
+}
+
+/* Fichas de la cadena de valor */
+.cycle-token {
+    background: rgba(10, 15, 22, 0.9);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    position: relative;
+}
+
+/* Flecha conectora entre fichas */
+.cycle-token:not(:last-child)::after {
+    content: "➔";
+    position: absolute;
+    right: -15px;
+    color: rgba(255,255,255,0.3);
+    font-size: 1.2rem;
+}
+
+@keyframes popIn { 
+    0% { transform: scale(0) translateY(10px); opacity: 0; } 
+    100% { transform: scale(1) translateY(0); opacity: 1; } 
+}
+
+/* ==================================================
+   RESULTADOS DINÁMICOS DEL SANDBOX (Puntaje + Riesgos)
+   ================================================== */
+.sandbox-results {
+    display: flex;
+    gap: 20px;
+    text-align: left;
+    margin-top: 15px;
+    flex-wrap: wrap;
+}
+
+.sandbox-score-panel {
+    flex: 1;
+    min-width: 250px;
+    background: rgba(0,0,0,0.6);
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.sandbox-risks-panel {
+    flex: 2;
+    min-width: 300px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.mini-risk-card {
+    background: rgba(20, 25, 30, 0.8);
+    border-left: 4px solid;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    animation: popIn 0.4s ease forwards;
+}
+
+.mini-risk-card h5 { 
+    margin-bottom: 8px; 
+    font-size: 1rem; 
+}
+
+.mini-risk-card p { 
+    font-size: 0.8rem; 
+    color: #ccc; 
+    line-height: 1.4; 
+    margin: 0; 
+}
+
+/* ==================================================
+   MODAL DE EJEMPLOS REALES (IMPACTO VISUAL)
+   ================================================== */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+.modal-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background: #0a0f16;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 16px;
+    padding: 30px;
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+    transform: translateY(30px) scale(0.95);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.7);
+}
+
+.modal-overlay.show .modal-content {
+    transform: translateY(0) scale(1);
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    color: #fff;
+    font-size: 2rem;
+    cursor: pointer;
+    transition: color 0.2s;
+    line-height: 1;
+}
+
+.close-btn:hover { color: #FF5A36; }
+
+/* Escenario del desastre / sanación */
+.modal-visual {
+    width: 100%;
+    height: 180px; /* Un poco más alto para que la foto se luzca */
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.modal-visual img:hover {
+    opacity: 1 !important; /* Brillo completo al pasar el mouse */
+}
+
+.btn-ejemplo {
+    background: transparent;
+    border: 1px solid currentColor;
+    color: inherit;
+    padding: 6px 12px;
+    font-size: 0.75rem;
+    border-radius: 12px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: all 0.2s;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+.btn-ejemplo:hover { background: currentColor; color: #0a0f16 !important; }
+
+/* Clases de escenas inyectadas desde JS */
+.escena-toxica {
+    background: linear-gradient(to bottom, #2b251c, #141708);
+    box-shadow: inset 0 0 30px rgba(139, 195, 74, 0.2);
+    animation: smogPulsante 3s infinite alternate;
+}
+.escena-plastico {
+    background: linear-gradient(to bottom, #1a2a3a, #0b1116);
+    box-shadow: inset 0 0 30px rgba(33, 150, 243, 0.2);
+}
+.escena-verde {
+    background: linear-gradient(to bottom, #1a3a24, #0a1610);
+    box-shadow: inset 0 0 30px rgba(76, 175, 80, 0.3);
+}
+
+@keyframes smogPulsante {
+    0% { filter: contrast(1) sepia(0.3) hue-rotate(40deg); }
+    100% { filter: contrast(1.2) sepia(0.6) hue-rotate(60deg) brightness(0.8); }
 }
