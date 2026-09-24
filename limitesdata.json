@@ -88,5 +88,77 @@
       "Proliferación de 'zonas muertas' marinas desprovistas de oxígeno.",
       "Contaminación de mantos freáticos de consumo por nitratos tóxicos."
     ]
+  },
+  {
+    "id": "nuevas-entidades",
+    "nombre": "Nuevas Entidades",
+    "icono": "🧪",
+    "color": "#FF7043",
+    "bg_color": "#FBE9E7",
+    "mecanismo": "Representa la acumulación de sustancias y materiales creados por la actividad humana, como microplásticos, químicos sintéticos y residuos persistentes.",
+    "pros": [
+      "Reducción de residuos mediante economía circular y ecodiseño.",
+      "Sustitución de sustancias peligrosas por alternativas biodegradables.",
+      "Mejoras en el tratamiento y monitoreo de contaminantes."
+    ],
+    "contras": [
+      "Acumulación de microplásticos y compuestos tóxicos en los ecosistemas.",
+      "Efectos desconocidos de nuevas sustancias sobre la salud y la biodiversidad.",
+      "Dificultad para retirar contaminantes persistentes del ambiente."
+    ]
+  },
+  {
+    "id": "acidificacion-oceanos",
+    "nombre": "Acidificación de los Océanos",
+    "icono": "🌊",
+    "color": "#26A69A",
+    "bg_color": "#E0F2F1",
+    "mecanismo": "Mide la disminución del pH de los océanos causada por la absorción de dióxido de carbono atmosférico, que altera la química marina.",
+    "pros": [
+      "Reducción de emisiones de CO2 mediante energías limpias.",
+      "Protección y restauración de manglares, praderas marinas y arrecifes.",
+      "Monitoreo de la química oceánica para anticipar impactos."
+    ],
+    "contras": [
+      "Dificulta la formación de conchas y esqueletos de organismos marinos.",
+      "Afecta arrecifes de coral, moluscos y cadenas alimentarias.",
+      "Reduce la resiliencia de los océanos frente al calentamiento global."
+    ]
+  },
+  {
+    "id": "agotamiento-ozono",
+    "nombre": "Agotamiento del Ozono",
+    "icono": "☀️",
+    "color": "#42A5F5",
+    "bg_color": "#E3F2FD",
+    "mecanismo": "Describe la reducción de la capa de ozono estratosférico, que protege a los seres vivos de la radiación ultravioleta dañina.",
+    "pros": [
+      "El Protocolo de Montreal redujo el uso de sustancias destructoras del ozono.",
+      "La capa de ozono muestra una recuperación gradual.",
+      "La vigilancia atmosférica permite detectar nuevas amenazas."
+    ],
+    "contras": [
+      "Una capa debilitada aumenta la exposición a radiación ultravioleta.",
+      "Algunos sustitutos industriales pueden contribuir al calentamiento global.",
+      "La recuperación completa requiere mantener acuerdos internacionales."
+    ]
+  },
+  {
+    "id": "aerosoles-atmosfericos",
+    "nombre": "Aerosoles Atmosféricos",
+    "icono": "🌫️",
+    "color": "#78909C",
+    "bg_color": "#ECEFF1",
+    "mecanismo": "Evalúa la concentración de partículas suspendidas en la atmósfera, originadas por combustión, industria, incendios y polvo, que afectan el clima y la salud.",
+    "pros": [
+      "Filtros industriales y transporte limpio reducen las emisiones.",
+      "La restauración de suelos disminuye el polvo atmosférico.",
+      "Las redes de monitoreo permiten actuar sobre focos regionales."
+    ],
+    "contras": [
+      "Las partículas finas provocan enfermedades respiratorias y cardiovasculares.",
+      "Pueden alterar las lluvias y la cantidad de radiación solar recibida.",
+      "Los incendios y la contaminación urbana elevan el riesgo rápidamente."
+    ]
   }
 ]

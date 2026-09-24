@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bionova - Energías Renovables y Riesgos</title>
     <link rel="stylesheet" href="energias-styles.css">
+    <!-- Librería para el gráfico de simulación -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <!-- Fondo interactivo de partículas -->
@@ -12,10 +14,10 @@
 
     <!-- Navegación superior -->
     <nav class="top-nav">
-        <a href="index.html" class="back-btn">← Volver al Simulador</a>
+        <a href="index.html" class="back-btn">← Volver al Menú Principal</a>
     </nav>
 
-    <!-- UN SOLO CONTENEDOR CONTENIENDO AMBOS MÓDULOS -->
+    <!-- UN SOLO CONTENEDOR CONTENIENDO AMBOS MÓDULOS INICIALES -->
     <main class="content-wrapper">
         
         <!-- MÓDULO 03: ENERGÍAS RENOVABLES -->
@@ -49,12 +51,6 @@
             </div>
         </section>
 
-        <br>
-        <br>
-        <br>
-        <br>
-        
-        <!-- DIVISOR CON EL MISMO ESPACIADO INTERNO -->
         <div class="section-divider"></div>
 
         <!-- MÓDULO: RIESGOS ENERGÍAS RENOVABLES -->
@@ -67,69 +63,120 @@
             
             <!-- Rejilla para las tarjetas de riesgos -->
             <div id="boundaries-grid" class="grid-container">
-                
-                <!-- Tarjeta 1 -->
                 <div class="boundary-card alto">
                     <h3>Intermitencia e Inestabilidad</h3>
                     <div class="status">Estado: riesgo alto</div>
                     <p>La variabilidad climática (falta de sol o viento) genera fluctuaciones severas en la red eléctrica, requiriendo respaldo térmico o baterías masivas.</p>
                 </div>
-
-                <!-- Tarjeta 2 -->
                 <div class="boundary-card alto">
                     <h3>Minerales y Tierras Raras</h3>
                     <div class="status">Estado: riesgo alto</div>
                     <p>Alta dependencia de la extracción intensiva de litio, cobalto y neodimio, generando impactos ecológicos y vulnerabilidades geopolíticas.</p>
                 </div>
-
-                <!-- Tarjeta 3 -->
                 <div class="boundary-card creciente">
                     <h3>Uso y Fragmentación del Suelo</h3>
                     <div class="status">Estado: riesgo creciente</div>
                     <p>Grandes parques solares y eólicos requieren amplias extensiones de tierra, provocando la pérdida de hábitats y alteración de ecosistemas.</p>
                 </div>
-
-                <!-- Tarjeta 4 -->
                 <div class="boundary-card creciente">
                     <h3>Gestión de Desechos</h3>
                     <div class="status">Estado: riesgo creciente</div>
                     <p>Falta de infraestructura global para el reciclaje masivo de palas de aerogeneradores y paneles fotovoltaicos al final de su vida útil.</p>
                 </div>
-
-                <!-- Tarjeta 5 -->
                 <div class="boundary-card creciente">
                     <h3>Infraestructura de Red</h3>
                     <div class="status">Estado: riesgo creciente</div>
                     <p>La ubicación remota de las fuentes renovables exige inversiones astronómicas en nuevas líneas de transmisión eléctrica de alta tensión.</p>
                 </div>
-
-                <!-- Tarjeta 6 -->
                 <div class="boundary-card creciente">
                     <h3>Alteración Hidrológica</h3>
                     <div class="status">Estado: riesgo creciente</div>
                     <p>Las mega represas hidroeléctricas alteran el caudal de los ríos, afectan la biodiversidad acuática y pueden desplazar comunidades.</p>
                 </div>
-
-                <!-- Tarjeta 7 -->
                 <div class="boundary-card seguro">
                     <h3>Impacto en Fauna Silvestre</h3>
                     <div class="status">Estado: seguro</div>
                     <p>Riesgo de colisión de aves y murciélagos con palas eólicas, mitigado mediante paradas programadas y sistemas de detección acústica.</p>
                 </div>
-
-                <!-- Tarjeta 8 -->
                 <div class="boundary-card seguro">
                     <h3>Fugas y Fluidos Térmicos</h3>
                     <div class="status">Estado: seguro</div>
                     <p>Manejo de sustancias químicas y aceites en centrales geotérmicas y termosolares bajo estrictos protocolos de contención ambiental.</p>
                 </div>
-
             </div>
         </section>
-
     </main>
 
-    <!-- Scripts de partículas y lógica JS -->
+    <!-- MÓDULO NUEVO: SIMULADOR DE RED ELÉCTRICA (TARJETA INDEPENDIENTE) -->
+    <section class="module-section" id="simulador-red">
+        <div style="text-align: center; max-width: 900px; margin: 0 auto 2rem auto;">
+            <span class="hero-tag">Simulador</span>
+            <h1 class="title">Construye tu Red Eléctrica</h1>
+            <p class="description">
+                Arrastra las plantas a los distintos biomas para aprovechar sus bonificaciones de eficiencia. Vigila tu inversión total y el impacto visual en el ecosistema.
+            </p>
+        </div>
+
+        <div class="sim-stats-bar">
+            <div class="sim-stat-item">
+                <div style="color: #ccc;">Capacidad Base</div>
+                <div class="sim-stat-value" id="ui-cap">0 MW</div>
+            </div>
+            <div class="sim-stat-item" style="border-color: #FFC107;">
+                <div style="color: #ccc;">Inversión Total</div>
+                <div class="sim-stat-value" style="color: #FFC107;" id="ui-cost">$0 M</div>
+            </div>
+            <div class="sim-stat-item" style="border-color: #2080D0;">
+                <div style="color: #ccc;">Estado de Red</div>
+                <div class="sim-stat-value" style="color: #2080D0;" id="ui-status">Esperando...</div>
+            </div>
+        </div>
+
+        <div class="sim-main-layout">
+            <!-- Sidebar: Inventario de Plantas -->
+            <div class="sim-sidebar" id="inventory">
+                <h2>Inventario</h2>
+                <!-- Se llena dinámicamente con JS -->
+            </div>
+
+            <!-- Canvas / Dropzone con Biomas Interactivos -->
+            <div class="sim-canvas-area">
+                <div class="sim-dropzone" id="dropzone" ondragover="allowDrop(event)" ondrop="drop(event)">
+                    <!-- Cuadrantes de Biomas con clase inicial 'stage-1' -->
+                    <div class="biome biome-desert stage-1" id="biome-desert"><span class="biome-label">☀️ Desierto (+30% Solar)</span></div>
+                    <div class="biome biome-coast stage-1" id="biome-coast"><span class="biome-label">🌬️ Costa Ventosa (+30% Eólica)</span></div>
+                    <div class="biome biome-river stage-1" id="biome-river"><span class="biome-label">🌊 Río Caudaloso (+20% Hidro)</span></div>
+                    <div class="biome biome-forest stage-1" id="biome-forest"><span class="biome-label">🌱 Zona Volcánica/Bosque (+20% Bio/Geo)</span></div>
+                
+                </div>
+                
+                <!-- Panel Inferior de Gráfico y Diagnóstico -->
+                <div class="sim-bottom-panel">
+                    <div class="sim-chart-container">
+                        <button class="btn-play" id="btn-simulate" onclick="runSimulation()">▶ Simular 24 Horas</button>
+                        <canvas id="simChart"></canvas>
+                    </div>
+                    <div class="sim-diagnosis-container">
+                        <h2 style="font-size: 1.2rem; color: #e0f2fe; margin-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 5px;">Diagnóstico de Red</h2>
+                        <div id="diagnosis-results" class="hidden">
+                            <div style="display:flex; gap: 10px; margin-bottom: 15px;">
+                                <div class="sim-stat-item" style="flex: 1; border-color: #FFB300;">
+                                    <div style="color: #ccc; font-size:0.75rem;">Cobertura de Demanda</div>
+                                    <div class="sim-stat-value" id="diag-cov" style="color: #FFB300; font-size: 1.1rem;">0%</div>
+                                </div>
+                            </div>
+                            <div id="dynamic-risks"></div>
+                        </div>
+                        <div id="diagnosis-placeholder" style="color:#666; font-size:0.9rem; text-align:center; margin-top:20px;">
+                            Ejecuta la simulación para evaluar los impactos y la estabilidad.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
     <script src="energias-java.js"></script>
 </body>

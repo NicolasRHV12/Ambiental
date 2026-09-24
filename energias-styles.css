@@ -1,4 +1,6 @@
-/* Reseteo Global */
+/* =========================================================
+   RESETEO Y ESTILOS GLOBALES
+   ========================================================= */
 * {
     margin: 0;
     padding: 0;
@@ -12,7 +14,6 @@ body {
     overflow-x: hidden;
 }
 
-/* Fondo interactivo fijo */
 #tsparticles {
     position: fixed;
     width: 100%;
@@ -22,7 +23,6 @@ body {
     left: 0;
 }
 
-/* Navegación */
 .top-nav {
     padding: 2rem 2rem 0 2rem;
     position: relative;
@@ -45,7 +45,6 @@ body {
     color: #0d1117;
 }
 
-/* Contenedor principal de tarjetas */
 .content-wrapper {
     position: relative;
     z-index: 10;
@@ -58,6 +57,12 @@ body {
     border: 1px solid rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
+}
+
+.section-divider {
+    height: 1px;
+    background: rgba(255, 255, 255, 0.1);
+    margin: 3.5rem 0;
 }
 
 .hero-tag {
@@ -82,10 +87,9 @@ body {
     line-height: 1.6;
 }
 
-/* --------------------------------------------------
-   MÓDULO 03: ENERGÍAS RENOVABLES
-   -------------------------------------------------- */
-
+/* =========================================================
+   MÓDULO: INFORMACIÓN DE ENERGÍAS
+   ========================================================= */
 .energy-selector-container {
     display: flex;
     justify-content: center;
@@ -163,27 +167,13 @@ body {
     background: rgba(255, 255, 255, 0.03);
 }
 
-.info-box.pros {
-    border-left: 4px solid #4CAF50;
-}
-
-.info-box.contras {
-    border-left: 4px solid #FF5A36;
-}
-
-.info-box h3 {
-    margin-bottom: 12px;
-    font-size: 1.1rem;
-}
-
+.info-box.pros { border-left: 4px solid #4CAF50; }
+.info-box.contras { border-left: 4px solid #FF5A36; }
+.info-box h3 { margin-bottom: 12px; font-size: 1.1rem; }
 .info-box.pros h3 { color: #81C784; }
 .info-box.contras h3 { color: #FF8A65; }
 
-.info-box ul {
-    list-style-type: none;
-    padding-left: 0;
-}
-
+.info-box ul { list-style-type: none; padding-left: 0; }
 .info-box li {
     font-size: 0.9rem;
     color: #cccccc;
@@ -193,24 +183,12 @@ body {
     line-height: 1.4;
 }
 
-.info-box.pros li::before {
-    content: "✓";
-    position: absolute;
-    left: 0;
-    color: #4CAF50;
-}
+.info-box.pros li::before { content: "✓"; position: absolute; left: 0; color: #4CAF50; }
+.info-box.contras li::before { content: "✕"; position: absolute; left: 0; color: #FF5A36; }
 
-.info-box.contras li::before {
-    content: "✕";
-    position: absolute;
-    left: 0;
-    color: #FF5A36;
-}
-
-/* --------------------------------------------------
-   MÓDULO 01: LÍMITES PLANETARIOS
-   -------------------------------------------------- */
-
+/* =========================================================
+   MÓDULO: TARJETAS DE RIESGOS
+   ========================================================= */
 .grid-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -233,31 +211,138 @@ body {
     box-shadow: 0 5px 15px rgba(0,0,0,0.5);
 }
 
-.boundary-card h3 {
-    margin-bottom: 8px;
-    font-size: 1.2rem;
-    color: #FF5A36;
-}
+.boundary-card h3 { margin-bottom: 8px; font-size: 1.2rem; color: #FF5A36; }
+.boundary-card .status { font-size: 0.85rem; font-weight: 600; margin-bottom: 10px; color: #ffffff; }
+.boundary-card p { font-size: 0.88rem; color: #bbb; line-height: 1.4; }
 
-.boundary-card .status {
-    font-size: 0.85rem;
-    font-weight: 600;
-    margin-bottom: 10px;
-    color: #ffffff;
-}
-
-.boundary-card p {
-    font-size: 0.88rem;
-    color: #bbb;
-    line-height: 1.4;
-}
-
-/* Variaciones de color para estados de límites */
 .boundary-card.alto { border-top-color: #FF5A36; }
 .boundary-card.alto h3 { color: #FF5A36; }
-
 .boundary-card.creciente { border-top-color: #FFB300; }
 .boundary-card.creciente h3 { color: #FFB300; }
-
 .boundary-card.seguro { border-top-color: #4CAF50; }
 .boundary-card.seguro h3 { color: #81C784; }
+
+
+/* =========================================================
+   MÓDULO SIMULADOR: RED ELÉCTRICA (TARJETA FLOTANTE Y BIOMAS)
+   ========================================================= */
+
+.sim-stats-bar { display: flex; gap: 2rem; justify-content: center; margin-bottom: 20px; }
+.sim-stat-item { background: rgba(255, 255, 255, 0.05); padding: 0.5rem 1rem; border-radius: 8px; border-left: 3px solid #46e6b4; font-size: 0.9rem; text-align: left; }
+.sim-stat-value { font-size: 1.2rem; font-weight: bold; color: #fff; }
+
+.sim-main-layout { 
+    display: flex; 
+    height: 720px; 
+    background: rgba(10, 15, 22, 0.85); 
+    border: 1px solid rgba(255, 255, 255, 0.15); 
+    border-radius: 16px; 
+    overflow: hidden; 
+    text-align: left; 
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6); 
+    margin: 0 auto 5rem auto; 
+    width: 95%; 
+    max-width: 1100px; 
+}
+
+.sim-sidebar { width: 300px; background: rgba(0, 0, 0, 0.4); border-right: 1px solid rgba(255, 255, 255, 0.1); padding: 1rem; overflow-y: auto; }
+.sim-sidebar h2 { font-size: 1.1rem; margin-bottom: 1rem; color: #e0f2fe; border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-bottom: 0.5rem; }
+
+.draggable-item { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; padding: 10px; margin-bottom: 10px; cursor: grab; display: flex; align-items: center; gap: 10px; transition: transform 0.2s; }
+.draggable-item:hover { transform: translateY(-2px); background: rgba(255, 255, 255, 0.1); }
+.item-icon { width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+.item-info h4 { font-size: 0.85rem; margin-bottom: 2px; }
+.item-info p { font-size: 0.75rem; color: #aaa; }
+
+.sim-canvas-area { flex: 1; display: flex; flex-direction: column; background: #0a0f16; position: relative; }
+
+/* Configuración de los Biomas y Efectos Visuales */
+.sim-dropzone { 
+    flex: 1; 
+    position: relative; 
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+    grid-template-rows: 1fr 1fr; 
+    gap: 4px; 
+    background: rgba(255,255,255,0.1); 
+}
+
+.biome { 
+    position: relative; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    background-size: cover; 
+    background-position: center; 
+    transition: background-image 0.6s ease-in-out; 
+}
+
+/* Capa oscura translúcida para legibilidad */
+.biome::before {
+    content: ''; 
+    position: absolute; 
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(10, 15, 22, 0.65); 
+    z-index: 1; 
+}
+
+.biome-label { 
+    position: absolute; 
+    top: 15px; 
+    left: 15px; 
+    font-size: 0.9rem; 
+    font-weight: bold; 
+    color: rgba(255,255,255,0.95); 
+    pointer-events: none; 
+    text-shadow: 0 2px 5px rgba(0,0,0,0.9); 
+    z-index: 2; 
+}
+
+.sim-drop-hint { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(0,0,0,0.8); padding: 8px 16px; border-radius: 20px; color: #46e6b4; font-size: 0.9rem; pointer-events: none; text-align: center; border: 1px solid #46e6b4; z-index: 5; }
+
+.placed-node { position: absolute; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; box-shadow: 0 0 15px rgba(0,0,0,0.5); transform: translate(-50%, -50%); cursor: pointer; border: 2px solid rgba(255,255,255,0.2); z-index: 10 !important; }
+.placed-node:hover::after { content: '❌'; position: absolute; top: -15px; right: -10px; font-size: 12px; }
+
+/* --------------------------------------------------
+   RUTAS DE IMÁGENES LOCALES DE LOS BIOMAS
+   Asegúrate de guardar tus imágenes en la carpeta 'img'
+   -------------------------------------------------- */
+
+/* 1. DESIERTO */
+.biome-desert.stage-1 { background-image: url('img/desierto1.png'); } 
+.biome-desert.stage-2 { background-image: url('img/desierto2.png'); } 
+.biome-desert.stage-3 { background-image: url('img/desierto3.png'); } 
+
+/* 2. COSTA VENTOSA */
+.biome-coast.stage-1 { background-image: url('img/costa1.png'); } 
+.biome-coast.stage-2 { background-image: url('img/costa2.png'); } 
+.biome-coast.stage-3 { background-image: url('img/costa3.png'); } 
+
+/* 3. RÍO CAUDALOSO */
+.biome-river.stage-1 { background-image: url('img/rio1.png'); } 
+.biome-river.stage-2 { background-image: url('img/rio2.png'); } 
+.biome-river.stage-3 { background-image: url('img/rio3.png'); } 
+
+/* 4. ZONA VOLCÁNICA / BOSQUE */
+.biome-forest.stage-1 { background-image: url('img/bosque1.png'); } 
+.biome-forest.stage-2 { background-image: url('img/bosque2.png'); } 
+.biome-forest.stage-3 { background-image: url('img/bosque3.png'); } 
+
+
+/* Controles inferiores del simulador */
+.sim-bottom-panel { 
+    height: 320px; 
+    background: rgba(0, 0, 0, 0.6); 
+    border-top: 1px solid rgba(255, 255, 255, 0.1); 
+    padding: 1.5rem; 
+    display: flex; 
+    gap: 1.5rem; 
+}
+
+.sim-chart-container { flex: 2; position: relative; padding-bottom: 15px; }
+.sim-diagnosis-container { flex: 1; overflow-y: auto; padding-left: 1rem; border-left: 1px solid rgba(255,255,255,0.1); }
+
+.btn-play { background: #46e6b4; color: #0a0f16; border: none; padding: 6px 16px; border-radius: 20px; font-weight: bold; font-size: 0.9rem; cursor: pointer; margin-bottom: 10px; transition: 0.3s; }
+.btn-play:hover { background: #35c497; transform: scale(1.05); }
+.btn-play:disabled { background: #555; color: #888; cursor: not-allowed; transform: none; }
+.hidden { display: none; }
