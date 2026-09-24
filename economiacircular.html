@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bionova - Economía Circular y Riesgos</title>
-    <link rel="stylesheet" href="limites-styles.css">
+    <link rel="stylesheet" href="economiastyle.css">
 </head>
 <body>
     <!-- Fondo interactivo de partículas -->
@@ -31,12 +31,18 @@
                 <!-- Se llena dinámicamente desde economia-java.js -->
             </div>
 
-            <!-- Tarjeta de detalle -->
+           <!-- Tarjeta de detalle -->
             <div class="energy-detail-card" id="detail-card">
                 <h2 id="energy-title" class="detail-title">Selecciona una etapa</h2>
                 <p id="energy-mechanism" class="detail-description">Presiona cualquiera de los botones superiores para desplegar la información.</p>
                 
+                <!-- ESTO DEBE ESTAR AQUÍ -->
+                <button id="btn-holo" class="holo-btn">🌐 Iniciar Simulación Holográfica</button>
+                <div id="holo-world" class="holo-world"></div>
+                
                 <div class="pros-cons-grid">
+                    <!-- ... pros y contras ... -->
+
                     <div class="info-box pros">
                         <h3>Ventajas / Pros</h3>
                         <ul id="energy-pros"></ul>
