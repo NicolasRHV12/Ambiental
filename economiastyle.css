@@ -442,3 +442,225 @@ body.estado-alto { background-color: #1a0808; }
     30% { transform: translate(3px, 2px) rotate(0deg); }
     100% { transform: translate(0px, 0px) rotate(0deg); }
 }
+
+/* ==================================================
+   CONSTRUCTOR DE CICLOS (SANDBOX)
+   ================================================== */
+.sandbox-container {
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px dashed rgba(70, 230, 180, 0.4);
+    border-radius: 16px;
+    padding: 25px;
+    margin-bottom: 30px;
+    text-align: center;
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+}
+
+.cycle-track {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 15px;
+    min-height: 70px;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 12px;
+    padding: 15px;
+    border: 1px solid rgba(255,255,255,0.05);
+}
+
+.empty-track-msg {
+    color: #666;
+    font-style: italic;
+    width: 100%;
+    text-align: center;
+}
+
+/* Fichas de la cadena de valor */
+.cycle-token {
+    background: rgba(10, 15, 22, 0.9);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    position: relative;
+}
+
+/* Flecha conectora entre fichas */
+.cycle-token:not(:last-child)::after {
+    content: "➔";
+    position: absolute;
+    right: -15px;
+    color: rgba(255,255,255,0.3);
+    font-size: 1.2rem;
+}
+
+@keyframes popIn { 
+    0% { transform: scale(0) translateY(10px); opacity: 0; } 
+    100% { transform: scale(1) translateY(0); opacity: 1; } 
+}
+
+/* ==================================================
+   RESULTADOS DINÁMICOS DEL SANDBOX (Puntaje + Riesgos)
+   ================================================== */
+.sandbox-results {
+    display: flex;
+    gap: 20px;
+    text-align: left;
+    margin-top: 15px;
+    flex-wrap: wrap;
+}
+
+.sandbox-score-panel {
+    flex: 1;
+    min-width: 250px;
+    background: rgba(0,0,0,0.6);
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.sandbox-risks-panel {
+    flex: 2;
+    min-width: 300px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.mini-risk-card {
+    background: rgba(20, 25, 30, 0.8);
+    border-left: 4px solid;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    animation: popIn 0.4s ease forwards;
+}
+
+.mini-risk-card h5 { 
+    margin-bottom: 8px; 
+    font-size: 1rem; 
+}
+
+.mini-risk-card p { 
+    font-size: 0.8rem; 
+    color: #ccc; 
+    line-height: 1.4; 
+    margin: 0; 
+}
+
+/* ==================================================
+   MODAL DE EJEMPLOS REALES (IMPACTO VISUAL)
+   ================================================== */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+.modal-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background: #0a0f16;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 16px;
+    padding: 30px;
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+    transform: translateY(30px) scale(0.95);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.7);
+}
+
+.modal-overlay.show .modal-content {
+    transform: translateY(0) scale(1);
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    color: #fff;
+    font-size: 2rem;
+    cursor: pointer;
+    transition: color 0.2s;
+    line-height: 1;
+}
+
+.close-btn:hover { color: #FF5A36; }
+
+/* Escenario del desastre / sanación */
+.modal-visual {
+    width: 100%;
+    height: 180px; /* Un poco más alto para que la foto se luzca */
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.modal-visual img:hover {
+    opacity: 1 !important; /* Brillo completo al pasar el mouse */
+}
+
+.btn-ejemplo {
+    background: transparent;
+    border: 1px solid currentColor;
+    color: inherit;
+    padding: 6px 12px;
+    font-size: 0.75rem;
+    border-radius: 12px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: all 0.2s;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+.btn-ejemplo:hover { background: currentColor; color: #0a0f16 !important; }
+
+/* Clases de escenas inyectadas desde JS */
+.escena-toxica {
+    background: linear-gradient(to bottom, #2b251c, #141708);
+    box-shadow: inset 0 0 30px rgba(139, 195, 74, 0.2);
+    animation: smogPulsante 3s infinite alternate;
+}
+.escena-plastico {
+    background: linear-gradient(to bottom, #1a2a3a, #0b1116);
+    box-shadow: inset 0 0 30px rgba(33, 150, 243, 0.2);
+}
+.escena-verde {
+    background: linear-gradient(to bottom, #1a3a24, #0a1610);
+    box-shadow: inset 0 0 30px rgba(76, 175, 80, 0.3);
+}
+
+@keyframes smogPulsante {
+    0% { filter: contrast(1) sepia(0.3) hue-rotate(40deg); }
+    100% { filter: contrast(1.2) sepia(0.6) hue-rotate(60deg) brightness(0.8); }
+}
