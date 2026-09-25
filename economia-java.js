@@ -199,50 +199,116 @@ document.addEventListener("DOMContentLoaded", async () => {
                     if (item.id === "reutilizacion-reciclaje") conteo.reutilizacion++;
                 });
 
+             // CÁLCULO BASE DE PRESENCIA
                 let score = 0;
                 if (conteo.diseno > 0) score += 30;
                 if (conteo.produccion > 0) score += 20;
                 if (conteo.consumo > 0) score += 20;
                 if (conteo.reutilizacion > 0) score += 30;
+                
+                // PENALIZACIONES ESTRUCTURALES BÁSICAS
                 if (conteo.reutilizacion > 0 && conteo.diseno === 0) score -= 20; 
                 if (conteo.produccion > 0 && conteo.reutilizacion === 0) score -= 30; 
+
+                // NUEVO: DINÁMICAS DE ACUMULACIÓN MASIVA (MEGACADENAS)
+                let desequilibrio = null;
+                let totalFichas = activeCycle.length;
+                let cargaLineal = conteo.produccion + conteo.consumo;
+                let cargaCircular = conteo.diseno + conteo.reutilizacion;
+
+                // 1. Colapso por Acumulación (como en tu imagen: muchas fichas, pero domina la industria)
+                if (totalFichas >= 10 && cargaLineal > cargaCircular * 2) {
+                    score -= 40; // Castigo duro por cuello de botella logístico
+                    desequilibrio = "colapso-escala";
+                }
+                // 2. Utopía Global (metieron muchísimo de todo, pero de forma armónica y equilibrada)
+                else if (totalFichas >= 12 && conteo.diseno >= 3 && conteo.produccion >= 3 && conteo.consumo >= 3 && conteo.reutilizacion >= 3) {
+                    score = 100;
+                    desequilibrio = "utopia-global";
+                }
+                // 3. Sobreproducción simple
+                else if (conteo.produccion > conteo.consumo * 2 && conteo.produccion >= 3) {
+                    score -= 40; 
+                    desequilibrio = "sobreproduccion";
+                } 
+                // 4. Hiperconsumo simple
+                else if (conteo.consumo > conteo.produccion * 2 && conteo.consumo >= 3) {
+                    score -= 40; 
+                    desequilibrio = "hiperconsumo";
+                }
+
+                // Limitar score entre 0 y 100
                 score = Math.max(0, Math.min(100, score));
 
+                // ASIGNAR COLORES Y ESTADO DEL ECOSISTEMA SEGÚN EL PUNTAJE
                 let specificRiskIds = [];
                 let riesgoDetonado = "seguro";
-                let colorPuntaje = "#4CAF50";
-                let descripcionImpacto = "";
-                let idEscenarioGlobal = ""; // ID para cargar el ejemplo real en el Modal
+                let colorPuntaje = "#4CAF50"; 
 
-                if (score === 100) { 
+                if (score < 40) { 
+                    riesgoDetonado = "riesgo alto"; 
+                    colorPuntaje = "#FF5A36"; 
+                } else if (score < 80) { 
+                    riesgoDetonado = "riesgo creciente"; 
+                    colorPuntaje = "#FFB300"; 
+                }
+
+                // ASIGNAR EL ESCENARIO TEXTUAL Y LA IMAGEN GLOBAL
+                let descripcionImpacto = "";
+                let idEscenarioGlobal = ""; 
+
+                // --- EVALUAR PRIMERO LAS ACUMULACIONES MASIVAS ---
+                if (desequilibrio === "colapso-escala") {
+                    specificRiskIds = ["fuga-residuos", "extrativismo-lineal"];
+                    descripcionImpacto = "<strong>Proyección a Futuro (Colapso Sistémico):</strong> Has creado un monstruo logístico. Acumular tantas plantas de producción y consumo con un esfuerzo circular tan pobre genera un cuello de botella inmanejable. La basura inundará las ciudades antes de poder ser procesada.";
+                    idEscenarioGlobal = "colapso-escala";
+                }
+                else if (desequilibrio === "utopia-global") {
+                    specificRiskIds = ["simbiosis-industrial", "modelos-mantenimiento-alquiler"];
+                    descripcionImpacto = "<strong>Proyección a Futuro (Sinergia Global):</strong> ¡Impresionante! Has escalado la economía circular a un nivel global. Al expandir todas las fases en perfecto equilibrio, lograste que toda una red de industrias y consumidores operen con cero residuos.";
+                    idEscenarioGlobal = "utopia-global";
+                }
+                else if (desequilibrio === "sobreproduccion") {
+                    specificRiskIds = ["extrativismo-lineal", "obsolescencia-programada"]; 
+                    descripcionImpacto = "<strong>Proyección a Futuro (Sobreproducción):</strong> Has fabricado masivamente sin demanda real ni reciclaje. Esto agota los recursos a un ritmo acelerado y despilfarra energía en bienes que nadie utilizará.";
+                    idEscenarioGlobal = "sobreproduccion";
+                } 
+                else if (desequilibrio === "hiperconsumo") {
+                    specificRiskIds = ["fuga-residuos", "degradacion-materiales"];
+                    descripcionImpacto = "<strong>Proyección a Futuro (Hiperconsumo):</strong> La demanda supera con creces la capacidad de regeneración. El sistema colapsa intentando extraer más de lo que la Tierra puede dar.";
+                    idEscenarioGlobal = "hiperconsumo";
+                }
+                // --- EVALUAR EL RESTO DE MODELOS BÁSICOS ---
+                else if (score === 100) { 
                     specificRiskIds = ["simbiosis-industrial", "modelos-mantenimiento-alquiler"]; 
-                    descripcionImpacto = "<strong>Proyección a Futuro:</strong> Este sistema representa el ideal de la economía circular. Al diseñar para la durabilidad y garantizar el retorno de materiales, has cerrado el ciclo. La extracción de recursos vírgenes se detiene y la huella de carbono se minimiza radicalmente.";
+                    descripcionImpacto = "<strong>Proyección a Futuro:</strong> Este sistema básico representa el ideal de la economía circular. Has cerrado el ciclo y la huella de carbono se minimiza radicalmente.";
                     idEscenarioGlobal = "perfecto";
                 } 
-                else if (conteo.produccion > 0 && conteo.consumo > 0 && conteo.diseno === 0 && conteo.reutilizacion === 0) { 
+                else if (score >= 70 && score < 100) {
+                    specificRiskIds = ["logistica-inversa-incompleta"];
+                    descripcionImpacto = "<strong>Proyección a Futuro:</strong> Estás por muy buen camino. Tienes bases sólidas de sostenibilidad, pero falta conectar alguna etapa para cerrar el ciclo perfectamente.";
+                    idEscenarioGlobal = "buen-camino"; 
+                }
+                else if (conteo.diseno === 0 && conteo.reutilizacion === 0) { 
                     specificRiskIds = ["extrativismo-lineal", "fuga-residuos"]; 
-                    descripcionImpacto = "<strong>Proyección a Futuro:</strong> Modelo estrictamente lineal (tomar, hacer, desechar). Provocará un colapso rápido en los vertederos, alta toxicidad y una dependencia extrema de cadenas de suministro vulnerables.";
+                    descripcionImpacto = "<strong>Proyección a Futuro:</strong> Modelo estrictamente lineal (tomar, hacer, desechar). Provocará un colapso rápido en los vertederos y alta toxicidad.";
                     idEscenarioGlobal = "lineal";
                 } 
                 else if (conteo.reutilizacion > 0 && conteo.diseno === 0) { 
                     specificRiskIds = ["degradacion-materiales", "dependencia-energetica-reciclaje"]; 
-                    descripcionImpacto = "<strong>Proyección a Futuro:</strong> Intentar reciclar productos no diseñados para ello es costoso e ineficiente. El modelo sufrirá de 'infraciclaje' (pérdida de calidad) y consumirá demasiada energía fósil intentando separar componentes complejos.";
+                    descripcionImpacto = "<strong>Proyección a Futuro:</strong> Intentar reciclar productos no diseñados para ello es costoso e ineficiente. El modelo sufrirá de 'infraciclaje'.";
                     idEscenarioGlobal = "infraciclaje";
                 } 
-                else if (conteo.diseno > 0 && conteo.produccion > 0 && conteo.reutilizacion === 0) { 
+                else if (conteo.diseno > 0 && conteo.reutilizacion === 0) { 
                     specificRiskIds = ["logistica-inversa-incompleta", "obsolescencia-programada"]; 
-                    descripcionImpacto = "<strong>Proyección a Futuro:</strong> Tienes un buen inicio con el ecodiseño, pero al carecer de logística de retorno, los productos premium terminarán en la basura. Esto representa una fuga masiva de capital y materiales valiosos hacia los ecosistemas naturales.";
+                    descripcionImpacto = "<strong>Proyección a Futuro:</strong> Tienes buen ecodiseño, pero sin logística de retorno, los productos de alta calidad terminarán en la basura obligando a deforestar más.";
                     idEscenarioGlobal = "fuga";
                 } 
                 else { 
                     specificRiskIds = ["logistica-inversa-incompleta", "greenwashing"]; 
-                    descripcionImpacto = "<strong>Proyección a Futuro:</strong> Modelo de transición con vulnerabilidades. Aunque hay intentos de sostenibilidad, las piezas desconectadas generarán cuellos de botella operativos y contaminación localizada.";
+                    descripcionImpacto = "<strong>Proyección a Futuro:</strong> Modelo de transición ineficiente. Al no tener capacidad para procesar los materiales, los residuos asfixiarán los ecosistemas.";
                     idEscenarioGlobal = "transicion";
                 }
-
-                if (score < 40) { riesgoDetonado = "riesgo alto"; colorPuntaje = "#FF5A36"; } 
-                else if (score < 80) { riesgoDetonado = "riesgo creciente"; colorPuntaje = "#FFB300"; }
-
                 const generatedRisks = riesgos.filter(r => specificRiskIds.includes(r.id));
                 // Hemos quitado el botón de las minitarjetas para ponerlo en el panel principal
                 let risksHTML = generatedRisks.map(r => `
@@ -295,38 +361,69 @@ document.addEventListener("DOMContentLoaded", async () => {
             const text = document.getElementById('modal-text');
             
             // Base de datos actualizada para usar imágenes fotográficas
-            const escenariosReales = {
+         const escenariosReales = {
                 "perfecto": { 
-                    titulo: "Philips: Luz como Servicio (LaaS)", 
-                    texto: "En el aeropuerto de Schiphol, Philips no vende bombillas; vende luz. Ellos son dueños de los equipos, por lo que diseñan luminarias que duran décadas y consumen poca energía. Si una se funde, Philips la recupera y recicla el 100% de los materiales. Cero basura electrónica, máxima rentabilidad.", 
-                    imagen: "img/philips-circular.jpg", // Reemplaza con la ruta de tu foto
+                    titulo: "Proyección Global: Ecosistemas Regenerados", 
+                    texto: "Si este modelo se aplica a gran escala, la era de los vertederos llegará a su fin. Al garantizar que todos los materiales retornen a la industria, las minas a cielo abierto y los pozos petroleros se cerrarán gradualmente por falta de demanda. Los bosques, ríos y océanos por fin tendrán tiempo para sanar, operando en perfecta armonía con los límites del planeta.", 
+                    imagen: "img/verde.jpg", 
+                    clase: "escena-verde"
+                },
+                "buen-camino": { 
+                    titulo: "Transición Positiva: Energías Limpias", 
+                    texto: "Aunque el ciclo aún no está cerrado al 100%, la integración de estas etapas fomenta el uso de energías renovables y reduce drásticamente la contaminación. Los ecosistemas comienzan a recuperarse. El siguiente paso es perfeccionar la logística para no perder ningún material en el camino.", 
+                    imagen: "img/renovable.png", // <--- USAMOS TUS MOLINOS DE VIENTO AQUÍ
                     clase: "escena-verde"
                 },
                 "lineal": { 
-                    titulo: "Dunas Tóxicas del Fast Fashion", 
-                    texto: "En el Desierto de Atacama en Chile se acumulan más de 39,000 toneladas anuales de ropa barata (producida y consumida linealmente). Estos basurales textiles tardan 200 años en biodegradarse, liberando toxinas al subsuelo y asfixiando por completo el ecosistema desértico.", 
-                    imagen: "img/atacama-ropa.jpg", // Reemplaza con la ruta de tu foto
-                    clase: "escena-plastico"
+                    titulo: "Colapso por Vertederos (Modelo Lineal)", 
+                    texto: "Al producir y consumir sin planificar el retorno, el destino final de todos los materiales es la basura. Estas montañas de residuos tardan siglos en degradarse, filtrando lixiviados tóxicos a las aguas subterráneas y emitiendo metano, asfixiando por completo los ecosistemas cercanos.", 
+                    imagen: "img/vertedero.jpg", 
+                    clase: "escena-toxica"
                 },
                 "infraciclaje": { 
                     titulo: "El Mito del Reciclaje de Envases Flexibles", 
                     texto: "Millones de bolsas de snacks combinan capas de aluminio y plástico prensadas. Intentar reciclarlas consume inmensas cantidades de energía térmica y química. El resultado es un material oscuro y de baja calidad ('madera plástica') que no evita la extracción de nuevo aluminio para hacer más bolsas.", 
-                    imagen: "img/maderanegra.jpeg", // <-- RUTA ACTUALIZADA
+                    imagen: "img/plastik.jpg    ", 
                     clase: "escena-toxica"
                 },
                 "fuga": { 
-                    titulo: "Entierro Masivo de Oro y Coltán", 
-                    texto: "Cada año se desechan 50 millones de toneladas de basura electrónica. Teléfonos de alta gama terminan en vertederos porque no hay logística de retorno. Enterramos metales preciosos valorados en 62,000 millones de dólares mientras destruimos selvas para minar más.", 
-                    imagen: "img/ewaste-oro.jpg", // Reemplaza con la ruta de tu foto
+                    titulo: "Desertificación y Entierro de Recursos", 
+                    texto: "Tienes un buen diseño, pero sin logística de retorno los productos terminan en vertederos comunes. Al enterrar estos materiales valiosos, obligamos a las industrias a seguir deforestando y creando desiertos áridos para extraer nueva materia prima de la tierra.", 
+                    imagen: "img/desierto3.png", // <--- USAMOS TU FOTO DEL DESIERTO
                     clase: "escena-toxica"
                 },
                 "transicion": { 
-                    titulo: "Logística Rota: Exportación de Basura", 
-                    texto: "Muchos países recogen el plástico PET pero, al no tener capacidad industrial para procesarlo, lo exportan en barcos al sudeste asiático, donde termina siendo quemado a cielo abierto o arrojado a los ríos.", 
-                    imagen: "img/exportacion-basura.jpeg", // Reemplaza con la ruta de tu foto
+                    titulo: "Mares de Plástico y Ecosistemas Asfixiados", 
+                    texto: "Un modelo ineficiente. Al no tener capacidad industrial real para procesar los materiales, los residuos se desbordan de las ciudades y terminan en el océano. Millones de toneladas de plástico asfixian la vida marina, como las tortugas que confunden estas bolsas con su alimento natural.", 
+                    imagen: "img/plastik.jpg", 
                     clase: "escena-plastico"
-                }
+                },
+                "sobreproduccion": { 
+                    titulo: "Crisis de Sobreproducción Industrial", 
+                    texto: "Fabricar por fabricar no es desarrollo, es depredación. Las industrias operan al máximo quemando combustibles fósiles para crear inventarios que terminarán destruidos. La contaminación del aire se vuelve asfixiante por fábricas que no pueden detenerse.", 
+                    imagen: "img/3.jpg", // <-- Aprovechamos tu foto de la fábrica humeante
+                    clase: "escena-toxica"
+                },
+                "hiperconsumo": { 
+                    titulo: "Agotamiento Crítico de Recursos", 
+                    texto: "El hambre insaciable por consumir y desechar rápidamente arrasa con los ecosistemas. Sin darle tiempo a los bosques y ríos de regenerarse, la tierra pierde su fertilidad y se convierte en un desierto estéril incapaz de sostener vida.", 
+                    imagen: "img/4.jpg", // <-- Aprovechamos tu segunda foto de desierto
+                    clase: "escena-toxica"
+                },
+                "colapso-escala": { 
+                    titulo: "Colapso Sistémico Global", 
+                    texto: "Escalar una economía basada en el consumismo y la hiperproducción es un suicidio ambiental. La escasa infraestructura de reciclaje colapsa rápidamente, provocando desbordamientos tóxicos en los principales ríos del mundo y arruinando el suministro de agua.", 
+                    imagen: "img/5.jpg", // Usa alguna imagen de río industrial que tengas
+                    clase: "escena-toxica"
+                },
+                "utopia-global": { 
+                    titulo: "Economía Circular a Escala Global", 
+                    texto: "Lo lograste a un nivel monumental. No solo cerraste el ciclo, sino que creaste una red masiva y equilibrada de industrias sinérgicas. Al replicar este modelo en todas las naciones, la humanidad por fin prospera sin traspasar los límites planetarios.", 
+                    imagen: "img/6.jpg", // Aprovecha tu ícono de mundo feliz
+                    clase: "escena-verde"
+                },
             };
+            
 
             const data = escenariosReales[idEscenario];
             
