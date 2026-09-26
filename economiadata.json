@@ -1,0 +1,137 @@
+{
+  "etapas": [
+    {
+      "id": "diseno",
+      "nombre": "Diseño",
+      "icono": "✏️",
+      "color": "#4CAF50",
+      "bg_color": "#E8F5E9",
+      "mecanismo": "Incopora criterios de ecodiseño desde la fase inicial, planificando productos duraderos, fidedignos, reparables y libres de componentes tóxicos o no reciclables.",
+      "pros": [
+        "Facilita el desmontaje y la reparación en etapas posteriores.",
+        "Reduce drásticamente el uso de materia prima virgen.",
+        "Elimina residuos directamente desde la fase de concepción."
+      ],
+      "contras": [
+        "Requiere una mayor inversión de tiempo en investigación e ingeniería.",
+        "Altos costos iniciales en la sustitución de materiales convencionales."
+      ]
+    },
+    {
+      "id": "produccion",
+      "nombre": "Producción",
+      "icono": "🏭",
+      "color": "#0097A7",
+      "bg_color": "#E0F7FA",
+      "mecanismo": "Optimización de los procesos industriales mediante energías limpias, eficiencia hídrica y cero desperdicios en las líneas de fabricación.",
+      "pros": [
+        "Disminución drástica de las emisiones de carbono industriales.",
+        "Reaprovechamiento de subproductos en la misma cadena de valor.",
+        "Reducción sustancial de costos operativos a largo plazo."
+      ],
+      "contras": [
+        "Necesidad de reestructurar infraestructuras y maquinaria existente.",
+        "Resistencia al cambio en cadenas de suministro tradicionales."
+      ]
+    },
+    {
+      "id": "consumo",
+      "nombre": "Consumo",
+      "icono": "👤",
+      "color": "#66BB6A",
+      "bg_color": "#E8F8F5",
+      "mecanismo": "Fomenta un modelo de consumo responsable basado en el uso frente a la propiedad, priorizando la reparación, el alquiler y el mantenimiento.",
+      "pros": [
+        "Extiende significativamente la vida útil de los productos.",
+        "Desincentiva la cultura de 'usar y tirar' e impulsa el consumo local.",
+        "Genera ahorro financiero continuo para los consumidores."
+      ],
+      "contras": [
+        "Requiere un cambio cultural y educacional en los usuarios.",
+        "Menor frecuencia en ventas de unidades nuevas para fabricantes."
+      ]
+    },
+    {
+      "id": "reutilizacion-reciclaje",
+      "nombre": "Reutilización y reciclaje",
+      "icono": "♻️",
+      "color": "#2E7D32",
+      "bg_color": "#DCEDC8",
+      "mecanismo": "Recupera materiales e insumos al final de su ciclo de vida para reintroducirlos como materia prima secundaria en el sistema productivo.",
+      "pros": [
+        "Cierra el ciclo evitando que los desechos lleguen a vertederos.",
+        "Ahorra energía en comparación con el procesamiento de materia prima virgen.",
+        "Impulsa empleos verdes en la industria del reciclaje y logística."
+      ],
+      "contras": [
+        "Pérdida paulatina de calidad en ciertos materiales tras varios ciclos.",
+        "Requiere sistemas eficientes de recolección y separación en origen."
+      ]
+    }
+  ],
+  "riesgos": [
+    {
+      "id": "obsolescencia-programada",
+      "nombre": "Obsolescencia Programada",
+      "estado": "riesgo alto",
+      "color": "#FF5252",
+      "descripcion": "Diseño deliberado de productos con vida útil limitada que acelera la generación masiva de residuos e impide su reparación."
+    },
+    {
+      "id": "fuga-residuos",
+      "nombre": "Fuga de Residuos no Reciclables",
+      "estado": "riesgo alto",
+      "color": "#FF5252",
+      "descripcion": "Acumulación imprevista de plásticos complejos y contaminantes en ecosistemas naturales por falta de infraestructura de tratamiento."
+    },
+    {
+      "id": "extrativismo-lineal",
+      "nombre": "Extracción Incalculable de Materias Primas",
+      "estado": "riesgo alto",
+      "color": "#FF5252",
+      "descripcion": "Presión desmedida sobre recursos vírgenes debido a bajas tasas de reincorporación de insumos reciclados en la producción."
+    },
+    {
+      "id": "greenwashing",
+      "nombre": "Ecodiseño Superficial / Greenwashing",
+      "estado": "riesgo alto",
+      "color": "#FF5252",
+      "descripcion": "Estrategias de mercadeo que simulan sostenibilidad sin realizar cambios estructurales en la cadena de suministro."
+    },
+    {
+      "id": "dependencia-energetica-reciclaje",
+      "nombre": "Huella Energética del Reciclaje",
+      "estado": "riesgo alto",
+      "color": "#FF5252",
+      "descripcion": "Alto consumo de energía fósil en procesos de recolección, logística inversa y procesamiento mecánico/químico de desechos."
+    },
+    {
+      "id": "logistica-inversa-incompleta",
+      "nombre": "Deficiencia en Logística Inversa",
+      "estado": "riesgo creciente",
+      "color": "#FFC107",
+      "descripcion": "Infraestructura insuficiente de recolección selectiva que dificulta el retorno eficiente de productos al fabricante."
+    },
+    {
+      "id": "degradacion-materiales",
+      "nombre": "Pérdida de Calidad en Reciclaje",
+      "estado": "riesgo creciente",
+      "color": "#FFC107",
+      "descripcion": "Degradación progresiva de las propiedades mecánicas de polímeros y fibras tras múltiples ciclos de procesamiento."
+    },
+    {
+      "id": "modelos-mantenimiento-alquiler",
+      "nombre": "Suscripción y Pago por Uso",
+      "estado": "seguro",
+      "color": "#4CAF50",
+      "descripcion": "Transición exitosa del modelo de propiedad al de servicio, asegurando el mantenimiento continuo de bienes por el fabricante."
+    },
+    {
+      "id": "simbiosis-industrial",
+      "nombre": "Simbiosis Industrial Avanzada",
+      "estado": "seguro",
+      "color": "#4CAF50",
+      "descripcion": "Intercambio coordinado de subproductos y residuos entre diferentes sectores industriales operando como un ecosistema cerrado."
+    }
+  ]
+}

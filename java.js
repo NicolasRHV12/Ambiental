@@ -69,11 +69,34 @@ startButton.addEventListener("mouseleave", function () {
     this.style.transform = "translateY(0)";
 });
 
-// REDIRECCIÓN MÓDULO LÍMITES PLANETARIOS ---
+
+// REDIRECCIONES DE LOS MÓDULOS EN EL DRAWER ---
 const btnLimites = document.getElementById("btn-limites");
 if (btnLimites) {
     btnLimites.addEventListener("click", () => {
         window.location.href = "limites-planetarios.html"; 
+    });
+}
+
+const btnEconomia = document.getElementById("btn-economia");
+if (btnEconomia) {
+    btnEconomia.addEventListener("click", () => {
+        window.location.href = "economiacircular.html"; 
+    });
+}
+
+const btnEnergias = document.getElementById("btn-energias");
+if (btnEnergias) {
+    btnEnergias.addEventListener("click", () => {
+        window.location.href = "energias.html";
+    });
+}
+
+// REDIRECCIÓN BOTÓN PRINCIPAL DEL SIMULADOR
+const mainSimBtn = document.getElementById("mainSimBtn");
+if (mainSimBtn) {
+    mainSimBtn.addEventListener("click", () => {
+        window.location.href = "limites-planetarios.html";
     });
 }
 // ------------------------------------------------------
@@ -285,21 +308,6 @@ function getFibonacciSpherePoints(samples, radius) {
         points.push(new THREE.Vector3(x, y, z));
     }
     return points;
-}
-
-const btnEnergias = document.getElementById("btn-energias");
-if (btnEnergias) {
-    btnEnergias.addEventListener("click", () => {
-        window.location.href = "energias.html";
-    });
-}
-
-// REDIRECCIÓN BOTÓN PRINCIPAL DEL SIMULADOR
-const mainSimBtn = document.getElementById("mainSimBtn");
-if (mainSimBtn) {
-    mainSimBtn.addEventListener("click", () => {
-        window.location.href = "simulador.html";
-    });
 }
 
 window.addEventListener('DOMContentLoaded', App);

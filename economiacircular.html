@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bionova - Economía Circular y Riesgos</title>
+    <link rel="stylesheet" href="economiastyle.css">
+</head>
+<body>
+    <!-- Fondo interactivo de partículas -->
+    <div id="tsparticles"></div>
+
+    <!-- Navegación superior -->
+    <nav class="top-nav">
+        <a href="index.html" class="back-btn">← Volver al Simulador</a>
+    </nav>
+
+    <!-- CONTENEDOR PRINCIPAL UNIFICADO -->
+   <!-- CONTENEDOR PRINCIPAL UNIFICADO -->
+    <main class="content-wrapper">
+        
+        <!-- ==========================================
+             SECCIÓN 1: LECTURA Y HOLOGRAMA INDIVIDUAL
+             ========================================== -->
+        <section class="module-section">
+            <span class="hero-tag">Módulo 02</span>
+            <h1 class="title">Economía Circular</h1>
+            <p class="description">
+                Selecciona una etapa del ciclo para conocer su impacto, estrategias de optimización y beneficios en la cadena de valor.
+            </p>
+
+            <!-- Selector de botones redondos -->
+            <div class="energy-selector-container" id="energy-buttons">
+                <!-- Se llena dinámicamente desde JS -->
+            </div>
+
+            <!-- Tarjeta de detalle y Holograma -->
+            <div class="energy-detail-card" id="detail-card">
+                <h2 id="energy-title" class="detail-title">Selecciona una etapa</h2>
+                <p id="energy-mechanism" class="detail-description">Presiona cualquiera de los botones superiores para desplegar la información.</p>
+                
+                <!-- Botón y contenedor del Holograma Individual -->
+                <button id="btn-holo" class="holo-btn">🌐 Iniciar Simulación Holográfica</button>
+                <div id="holo-world" class="holo-world"></div>
+                
+                <div class="pros-cons-grid">
+                    <div class="info-box pros">
+                        <h3>Ventajas / Pros</h3>
+                        <ul id="energy-pros"></ul>
+                    </div>
+                    <div class="info-box contras">
+                        <h3>Desventajas / Contras</h3>
+                        <ul id="energy-contras"></ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- DIVISOR FLUIDO -->
+        <div class="section-divider"></div>
+
+        <!-- ==========================================
+             SECCIÓN 2: RIESGOS GENERALES
+             ========================================== -->
+        <section class="module-section">
+            <span class="hero-tag hero-tag-alt">RIESGOS</span>
+            <h1 class="title">Riesgos - Economía Circular</h1>
+            <p class="description">
+                Evaluación de cuellos de botella y vulnerabilidades críticas en la transición circular. Explora los factores de riesgo desde las amenazas más severas hasta los escenarios más seguros.
+            </p>
+            
+            <!-- Rejilla para las tarjetas de riesgo -->
+            <div id="boundaries-grid" class="grid-container">
+                <!-- Se llena dinámicamente desde JS -->
+            </div>
+        </section>
+
+        <!-- DIVISOR FLUIDO -->
+        <div class="section-divider"></div>
+
+        <!-- ==========================================
+             SECCIÓN 3: LABORATORIO (SANDBOX)
+             ========================================== -->
+        <section class="module-section" id="seccion-evaluador">
+            <span class="hero-tag">Laboratorio Interactivo</span>
+            <h1 class="title">Evaluador de Modelos</h1>
+            <p class="description">
+                Construye tu propia cadena de valor apilando etapas. Haz clic en los botones inferiores para añadir procesos a tu modelo y evalúa su impacto global en el ecosistema.
+            </p>
+
+            <!-- Botones exclusivos para añadir al Sandbox -->
+            <div class="energy-selector-container" id="sandbox-buttons" style="gap: 15px; margin-bottom: 20px;">
+                <!-- Se llena dinámicamente desde JS -->
+            </div>
+
+            <!-- Contenedor del Sandbox -->
+            <div class="sandbox-container">
+                <div id="cycle-track" class="cycle-track">
+                    <span id="empty-msg" class="empty-track-msg">Tu cadena de valor está vacía. Añade una etapa.</span>
+                </div>
+                
+                <div class="sandbox-actions">
+                    <button id="btn-analyze" class="holo-btn" style="margin: 15px auto 0 auto; width: auto;">⚠️ Evaluar Riesgos del Modelo</button>
+                    <button id="btn-clear" class="back-btn" style="margin-top: 15px; font-size: 0.8rem; cursor: pointer;">Limpiar Cadena</button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ==========================================
+         MODAL DE EJEMPLOS REALES (OCULTO POR DEFECTO)
+         ========================================== -->
+    <div id="example-modal" class="modal-overlay">
+        <div class="modal-content">
+            <span id="close-modal" class="close-btn">&times;</span>
+            <div id="modal-visual" class="modal-visual">
+                <!-- La escena tóxica o saludable se inyecta aquí -->
+            </div>
+            <h2 id="modal-title" style="color: #FF5A36; margin-top: 15px;">Título del Ejemplo</h2>
+            <p id="modal-text" style="color: #ccc; font-size: 0.95rem; line-height: 1.6; margin-top: 10px;">
+                Descripción del ejemplo real...
+            </p>
+        </div>
+    </div>
+
+    <!-- Scripts de partículas y lógica JS unificada -->
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
+    <script src="economia-java.js"></script>
+</body>
+</html>

@@ -1,4 +1,6 @@
-/* Reseteo básico */
+/* =========================================================
+   RESETEO Y ESTILOS GLOBALES
+   ========================================================= */
 * {
     margin: 0;
     padding: 0;
@@ -7,14 +9,13 @@
 }
 
 body {
-    background-color: #0a0f16; /* Fondo oscuro espacial */
+    background-color: #0a0f16;
     color: #ffffff;
     overflow-x: hidden;
 }
 
-/* El fondo de partículas debe quedar detrás de todo */
 #tsparticles {
-    position: absolute;
+    position: fixed;
     width: 100%;
     height: 100vh;
     z-index: -1;
@@ -22,93 +23,295 @@ body {
     left: 0;
 }
 
-/* Estilos de navegación */
 .top-nav {
-    padding: 2rem;
+    padding: 2rem 2rem 0 2rem;
     position: relative;
     z-index: 10;
 }
 
 .back-btn {
-    color: #417B2B; /* Tono verde que usas en tu planeta WebGL */
+    color: #46e6b4;
     text-decoration: none;
     font-weight: bold;
-    border: 1px solid #417B2B;
+    border: 1px solid #46e6b4;
     padding: 10px 20px;
     border-radius: 20px;
     transition: all 0.3s ease;
+    display: inline-block;
 }
 
 .back-btn:hover {
-    background-color: #417B2B;
-    color: white;
+    background-color: #46e6b4;
+    color: #0d1117;
 }
 
-/* Contenido principal centrado */
 .content-wrapper {
     position: relative;
     z-index: 10;
-    max-width: 800px;
-    margin: 5vh auto;
+    max-width: 900px;
+    margin: 3vh auto 5vh auto;
     text-align: center;
-    padding: 2rem;
-    background: rgba(10, 15, 22, 0.7);
-    border-radius: 15px;
+    padding: 2.5rem;
+    background: rgba(10, 15, 22, 0.75);
+    border-radius: 24px;
     border: 1px solid rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px); /* Efecto de cristal */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
 }
 
-.hero-tag {
-    color: #2080D0; /* Azul océano */
-    font-size: 0.9rem;
-    letter-spacing: 2px;
-    text-transform: uppercase;
+.module-section { width: 100%; }
+
+.section-divider {
+    height: 1px;
+    background: rgba(255, 255, 255, 0.1);
+    margin: 3.5rem 0;
 }
 
-.title {
-    font-size: 3rem;
-    margin: 10px 0;
-}
+.hero-tag { color: #46e6b4; font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase; }
+.hero-tag-alt { color: #2080D0; }
+.title { font-size: 2.8rem; margin: 10px 0; }
+.description { color: #cccccc; margin-bottom: 2.5rem; line-height: 1.6; }
 
-.description {
-    color: #cccccc;
-    line-height: 1.6;
-    margin-bottom: 2rem;
-}
-
-.dashboard-placeholder {
-    border: 2px dashed rgba(255, 255, 255, 0.2);
-    padding: 3rem;
-    border-radius: 10px;
-    color: rgba(255, 255, 255, 0.5);
-}
-/* Estilos de la cuadrícula de límites */
+/* =========================================================
+   MÓDULO 01: TARJETAS SUPERIORES
+   ========================================================= */
 .grid-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 20px;
     margin-top: 2rem;
 }
 
 .boundary-card {
-    background: rgba(0, 0, 0, 0.5);
-    border-top: 4px solid;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-top: 4px solid #FF5A36;
     padding: 20px;
-    border-radius: 8px;
+    border-radius: 12px;
     text-align: left;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.boundary-card:hover {
-    transform: translateY(-5px);
+.boundary-card:hover { transform: translateY(-5px); box-shadow: 0 5px 15px rgba(0,0,0,0.5); }
+.boundary-card h3 { margin-bottom: 8px; font-size: 1.2rem; color: #FF5A36; }
+.boundary-card .status { font-size: 0.85rem; font-weight: 600; margin-bottom: 10px; color: #ffffff; }
+.boundary-card p { font-size: 0.88rem; color: #bbb; line-height: 1.4; }
+
+.boundary-card.alto { border-top-color: #FF5A36; }
+.boundary-card.alto h3 { color: #FF5A36; }
+.boundary-card.creciente { border-top-color: #FFB300; }
+.boundary-card.creciente h3 { color: #FFB300; }
+.boundary-card.seguro { border-top-color: #4CAF50; }
+.boundary-card.seguro h3 { color: #81C784; }
+
+/* Botones circulares */
+.energy-selector-container { display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; margin-bottom: 30px; }
+.energy-btn-wrapper { display: flex; flex-direction: column; align-items: center; gap: 8px; cursor: pointer; }
+.energy-circle-btn { width: 75px; height: 75px; border-radius: 50%; border: 2px solid transparent; display: flex; align-items: center; justify-content: center; font-size: 32px; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); }
+.energy-btn-wrapper:hover .energy-circle-btn { transform: translateY(-5px) scale(1.05); }
+.energy-btn-wrapper.active .energy-circle-btn { transform: scale(1.1); border-color: #ffffff; box-shadow: 0 0 20px rgba(255, 255, 255, 0.4); }
+.energy-label { font-size: 0.95rem; font-weight: 600; color: #e0f2fe; }
+
+.energy-detail-card { background: rgba(0, 0, 0, 0.4); border-radius: 16px; padding: 30px; border: 1px solid rgba(255, 255, 255, 0.08); text-align: left; }
+.detail-title { font-size: 1.8rem; margin-bottom: 12px; color: #46e6b4; }
+.detail-description { line-height: 1.6; color: #dddddd; margin-bottom: 25px; }
+
+.pros-cons-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+.info-box { padding: 20px; border-radius: 12px; background: rgba(255, 255, 255, 0.03); }
+.info-box.pros { border-left: 4px solid #4CAF50; }
+.info-box.contras { border-left: 4px solid #FF5A36; }
+.info-box h3 { margin-bottom: 12px; font-size: 1.1rem; }
+.info-box.pros h3 { color: #81C784; }
+.info-box.contras h3 { color: #FF8A65; }
+.info-box ul { list-style-type: none; padding-left: 0; }
+.info-box li { font-size: 0.9rem; color: #cccccc; margin-bottom: 8px; position: relative; padding-left: 18px; line-height: 1.4; }
+.info-box.pros li::before { content: "✓"; position: absolute; left: 0; color: #4CAF50; }
+.info-box.contras li::before { content: "✕"; position: absolute; left: 0; color: #FF5A36; }
+
+/* =========================================================
+   MÓDULO SIMULADOR: CONSTRUCTOR DE CIVILIZACIONES (DRAG & DROP)
+   ========================================================= */
+.sim-standalone-container {
+    max-width: 1400px; 
+    margin: 4rem auto 5rem auto; 
+    padding: 0 20px;
 }
 
-.boundary-card h3 {
-    margin-bottom: 10px;
-    font-size: 1.2rem;
+.sim-main-layout { 
+    display: flex; 
+    height: 700px; 
+    background: rgba(10, 15, 22, 0.85); 
+    border: 1px solid rgba(255, 255, 255, 0.15); 
+    border-radius: 16px; 
+    overflow: hidden; 
+    text-align: left; 
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6); 
 }
 
-.boundary-card p {
-    font-size: 0.9rem;
-    color: #bbb;
-}   
+/* Panel Izquierdo: Inventario */
+.sim-sidebar { 
+    width: 320px; 
+    background: rgba(0, 0, 0, 0.4); 
+    border-right: 1px solid rgba(255, 255, 255, 0.1); 
+    padding: 1.5rem; 
+    overflow-y: auto; 
+}
+.sim-sidebar h2 { font-size: 1.2rem; margin-bottom: 1rem; color: #e0f2fe; border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-bottom: 0.5rem; }
+
+.draggable-item { 
+    background: rgba(255, 255, 255, 0.05); 
+    border: 1px solid rgba(255, 255, 255, 0.1); 
+    border-radius: 12px; 
+    padding: 10px; 
+    margin-bottom: 12px; 
+    cursor: grab; 
+    display: flex; 
+    align-items: center; 
+    gap: 12px; 
+    transition: transform 0.2s, background 0.2s; 
+}
+.draggable-item:hover { transform: translateY(-2px); background: rgba(255, 255, 255, 0.1); }
+.draggable-item:active { cursor: grabbing; }
+.item-icon { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; }
+.item-info h4 { font-size: 0.9rem; margin-bottom: 2px; color: #fff; }
+.item-info p { font-size: 0.75rem; color: #aaa; }
+
+/* Panel Central: Canvas y Mini Planeta */
+.sim-canvas-area { 
+    flex: 1; 
+    position: relative; 
+    background: radial-gradient(circle at center, #1a2230 0%, #0a0f16 100%);
+    background-image: radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px);
+    background-size: 40px 40px;
+    overflow: hidden;
+}
+
+.sim-drop-hint { 
+    position: absolute; top: 20px; left: 50%; transform: translateX(-50%);
+    background: rgba(0,0,0,0.8); padding: 8px 16px; border-radius: 20px; 
+    color: #aaa; font-size: 0.9rem; pointer-events: none; border: 1px solid #444; z-index: 5; 
+}
+
+.placed-node { 
+    position: absolute; width: 45px; height: 45px; border-radius: 50%; 
+    display: flex; align-items: center; justify-content: center; font-size: 22px; 
+    box-shadow: 0 0 20px rgba(0,0,0,0.6); transform: translate(-50%, -50%); 
+    cursor: pointer; border: 2px solid rgba(255,255,255,0.2); z-index: 10; 
+    animation: popIn 0.3s ease-out;
+}
+.placed-node:hover::after { content: '❌ Quitar'; position: absolute; top: -25px; background: #FF5A36; font-size: 10px; padding: 2px 6px; border-radius: 4px; white-space: nowrap; color: white;}
+@keyframes popIn { 0% { transform: translate(-50%, -50%) scale(0); } 100% { transform: translate(-50%, -50%) scale(1); } }
+
+/* Diseño del Mini Planeta Interactivo */
+.mini-planet-base {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 250px; height: 250px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, #4CAF50 0%, #0277BD 50%, #01579B 100%);
+    box-shadow: inset -30px -30px 50px rgba(0,0,0,0.8), 0 0 40px rgba(2, 119, 189, 0.4);
+    transition: all 1s ease;
+    z-index: 1;
+}
+
+.planet-atmosphere {
+    position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    border-radius: 50%;
+    box-shadow: inset 0 0 20px rgba(255,255,255,0.3);
+    transition: all 1s ease;
+}
+
+/* Clases dinámicas de impacto en el Planeta */
+.planet-acid { background: radial-gradient(circle at 30% 30%, #4CAF50 0%, #8BC34A 50%, #33691E 100%) !important; box-shadow: inset -30px -30px 50px rgba(0,0,0,0.8), 0 0 40px rgba(139, 195, 74, 0.4) !important; }
+.planet-hot { box-shadow: inset -30px -30px 50px rgba(0,0,0,0.8), 0 0 50px rgba(255, 82, 82, 0.8) !important; }
+.planet-desert { background: radial-gradient(circle at 30% 30%, #FFCA28 0%, #FF8F00 50%, #5D4037 100%) !important; }
+.planet-dead { filter: grayscale(100%) contrast(1.2); animation: shake 0.5s infinite; }
+
+@keyframes shake {
+  0% { transform: translate(-50%, -50%) rotate(0deg) scale(1); }
+  25% { transform: translate(-52%, -48%) rotate(2deg) scale(0.98); }
+  50% { transform: translate(-48%, -52%) rotate(-2deg) scale(1.02); }
+  75% { transform: translate(-51%, -49%) rotate(1deg) scale(0.99); }
+  100% { transform: translate(-50%, -50%) rotate(0deg) scale(1); }
+}
+
+/* Panel Derecho: Barras de Progreso (9 Límites) */
+.sim-right-panel { 
+    width: 380px; 
+    background: rgba(0, 0, 0, 0.6); 
+    border-left: 1px solid rgba(255, 255, 255, 0.1); 
+    padding: 1.5rem; 
+    overflow-y: auto; 
+}
+
+.progress-container { display: flex; flex-direction: column; gap: 15px; }
+.progress-item { width: 100%; }
+.progress-label { display: flex; justify-content: space-between; font-size: 0.8rem; color: #ccc; margin-bottom: 5px; }
+.progress-bar-bg { width: 100%; height: 12px; background: rgba(255,255,255,0.1); border-radius: 6px; overflow: hidden; }
+.progress-bar-fill { height: 100%; width: 0%; background: #4CAF50; transition: width 0.5s ease, background-color 0.5s ease; border-radius: 6px; }
+
+/* Scrollbars */
+.sim-sidebar::-webkit-scrollbar, .sim-right-panel::-webkit-scrollbar { width: 6px; }
+.sim-sidebar::-webkit-scrollbar-track, .sim-right-panel::-webkit-scrollbar-track { background: rgba(255,255,255,0.02); }
+.sim-sidebar::-webkit-scrollbar-thumb, .sim-right-panel::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 4px; }
+
+/* Pantalla de Colapso */
+#collapse-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+    background: rgba(10, 0, 0, 0.95); z-index: 9999;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    color: #FF5252; text-align: center;
+}
+#collapse-overlay h1 { font-size: 4rem; margin-bottom: 20px; text-shadow: 0 0 20px #FF5252; }
+#collapse-overlay p { font-size: 1.5rem; color: #fff; max-width: 600px; }
+.btn-play { background: #46e6b4; color: #0a0f16; border: none; padding: 12px 24px; border-radius: 20px; font-weight: bold; font-size: 1.1rem; cursor: pointer; transition: 0.3s; }
+.btn-play:hover { background: #35c497; transform: scale(1.05); }
+.hidden { display: none !important; }
+
+/* Panel Central: Separado en dos partes (Lienzo arriba, Planeta abajo) */
+.sim-canvas-area { 
+    flex: 1; 
+    display: flex;
+    flex-direction: column; /* Divide el contenedor verticalmente */
+    background: #0a0f16;
+}
+
+/* 1. Zona Superior: Donde se sueltan los proyectos */
+.sim-dropzone-grid {
+    height: 45%; 
+    position: relative;
+    border-bottom: 2px dashed rgba(255,255,255,0.15); /* Separador visual */
+    background-image: radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px);
+    background-size: 40px 40px;
+    overflow: hidden;
+}
+
+#planet-3d-container {
+    height: 55%;
+    width: 100%;
+    position: relative;
+    background: radial-gradient(circle at center, #1a2230 0%, #0a0f16 100%);
+    cursor: default;
+}
+#planet-3d-container canvas { pointer-events: none; }
+
+.sim-drop-hint { 
+    position: absolute; top: 15px; left: 50%; transform: translateX(-50%);
+    background: rgba(0,0,0,0.8); padding: 8px 16px; border-radius: 20px; 
+    color: #46e6b4; font-size: 0.9rem; pointer-events: none; border: 1px solid rgba(70,230,180,0.4); z-index: 5; 
+}
+
+.placed-node { 
+    position: absolute; width: 45px; height: 45px; border-radius: 50%; 
+    display: flex; align-items: center; justify-content: center; font-size: 22px; 
+    box-shadow: 0 0 20px rgba(0,0,0,0.6); transform: translate(-50%, -50%); 
+    cursor: pointer; border: 2px solid rgba(255,255,255,0.2); z-index: 10; 
+    animation: popIn 0.3s ease-out;
+}
+.placed-node:hover::after { content: '❌ Quitar'; position: absolute; top: -25px; background: #FF5A36; font-size: 10px; padding: 2px 6px; border-radius: 4px; white-space: nowrap; color: white;}
+
+@keyframes popIn { 
+    0% { transform: translate(-50%, -50%) scale(0); } 
+    100% { transform: translate(-50%, -50%) scale(1); } 
+}

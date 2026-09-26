@@ -1,38 +1,108 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Límites Planetarios - Bionova</title>
+    <title>Bionova - Energías Renovables y Límites Planetarios</title>
     <link rel="stylesheet" href="limites-styles.css">
+    
+    <!-- Librerías Externas -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Three.js para el Planeta 3D -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
 </head>
+
 <body>
-    <!-- 1. Contenedor del fondo interactivo -->
+    <!-- Fondo interactivo de partículas -->
     <div id="tsparticles"></div>
 
-    <!-- 2. Botón para regresar al inicio -->
+    <!-- Navegación superior -->
     <nav class="top-nav">
         <a href="index.html" class="back-btn">← Volver al Simulador</a>
     </nav>
 
-    <!-- 3. Contenedor principal para tu contenido -->
+    <!-- CONTENEDOR PRINCIPAL UNIFICADO -->
     <main class="content-wrapper">
-        <span class="hero-tag">Módulo 01</span>
-        <h1 class="title">Límites Planetarios</h1>
-        <p class="description">
-            Monitoreo en tiempo real de los 9 procesos ecológicos clave. Interactúa con el fondo para visualizar las conexiones sistémicas de la Tierra.
-        </p>
-        
-        <!--  formularios, gráficas de R o tablas dinámicas -->
-       
-<div id="boundaries-grid" class="grid-container">
-    <!-- Las tarjetas se generarán aquí desde JavaScript -->
-</div>>
+        <section class="module-section">
+            <span class="hero-tag">Módulo 01</span>
+            <h1 class="title">Límites Planetarios</h1>
+            <p class="description">Selecciona un límite planetario para conocer su funcionamiento, ventajas y riesgos principales.</p>
+
+            <div class="energy-selector-container" id="energy-buttons"></div>
+
+            <div class="energy-detail-card" id="detail-card">
+                <h2 id="energy-title" class="detail-title">Selecciona un límite planetario</h2>
+                <p id="energy-mechanism" class="detail-description">Presiona cualquiera de los botones superiores para desplegar la información.</p>
+
+                <div class="pros-cons-grid">
+                    <div class="info-box pros">
+                        <h3>Ventajas / Pros</h3>
+                        <ul id="energy-pros"></ul>
+                    </div>
+                    <div class="info-box contras">
+                        <h3>Desventajas / Contras</h3>
+                        <ul id="energy-contras"></ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="section-divider"></div>
+        <br><br><br><br>
+
+        <section class="module-section">
+            <span class="hero-tag hero-tag-alt">Riesgos</span>
+            <h1 class="title">Riesgos - Límites Planetarios</h1>
+            <p class="description">Evaluación interactiva del equilibrio ecológico global. Explora las conexiones sistémicas y los niveles de riesgo que condicionan la estabilidad del planeta.</p>
+            <div id="boundaries-grid" class="grid-container"></div>
+        </section>
     </main>
 
-    <!-- Librería tsParticles -->
+    <!-- MÓDULO NUEVO: SIMULADOR GLOBAL (CON PLANETA 3D) -->
+    <section class="module-section sim-standalone-container" id="simulador-limites">
+        <div style="text-align: center; margin-bottom: 2rem;">
+            <span class="hero-tag">Simulador</span>
+            <h1 class="title">Constructor de Civilizaciones</h1>
+            <p class="description">Arrastra Megaproyectos al lienzo (mitad superior). Observa el impacto en el planeta 3D (mitad inferior) y en los 9 límites planetarios.</p>
+        </div>
+
+        <div class="sim-main-layout">
+            <!-- Panel Izquierdo: Inventario -->
+            <div class="sim-sidebar" id="inventory">
+                <!-- Se llena dinámicamente con JS -->
+            </div>
+
+            <!-- Centro: Separado en Dropzone y Planeta 3D -->
+            <div class="sim-canvas-area">
+                <!-- Zona superior: Lienzo para arrastrar proyectos -->
+                <div class="sim-dropzone-grid" id="dropzone" ondragover="allowDrop(event)" ondrop="drop(event)">
+                </div>
+                
+                <!-- Zona inferior: Visor del Planeta 3D interactivo -->
+                <div id="planet-3d-container"></div>
+            </div>
+            
+            <!-- Panel Derecho: 9 Límites -->
+            <div class="sim-right-panel">
+                <h2 style="font-size: 1.2rem; color: #e0f2fe; margin-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 5px;">Estado Planetario</h2>
+                <div id="planet-status-text" style="font-weight:bold; color:#4CAF50; margin-bottom: 15px;">Ecosistema Estable</div>
+                <div id="progress-bars-container" class="progress-container">
+                    <!-- Se llena dinámicamente con JS -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Overlay de Colapso -->
+    <div id="collapse-overlay" class="hidden">
+        <h1> COLAPSO </h1>
+        <p>Has superado el umbral de irreversibilidad en 3 o más límites planetarios.</p>
+        <button onclick="resetSimulator()" class="btn-play" style="margin-top: 20px;">Reiniciar Planeta</button>
+    </div>
+
+    <!-- Scripts de lógica -->
     <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
-    <!-- Tu lógica de JavaScript para esta vista -->
     <script src="limites-java.js"></script>
 </body>
-</html><
+</html>
