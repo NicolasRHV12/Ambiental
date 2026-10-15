@@ -96,7 +96,7 @@ if (btnEnergias) {
 const mainSimBtn = document.getElementById("mainSimBtn");
 if (mainSimBtn) {
     mainSimBtn.addEventListener("click", () => {
-        window.location.href = "limites-planetarios.html";
+        window.location.href = "simuladorfinal.html";
     });
 }
 // ------------------------------------------------------
