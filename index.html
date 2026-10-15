@@ -5,7 +5,163 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bionova Simulator</title>
+
+     <!-- ÍCONO DE LA PESTAÑA (mismo logo del encabezado) -->
+    <link rel="icon" type="image/png" href="img/planeta-tierra.png">
+    <link rel="shortcut icon" type="image/png" href="img/planeta-tierra.png">
+    <link rel="apple-touch-icon" href="img/planeta-tierra.png">
+
     <link rel="stylesheet" href="styles.css">
+
+    <style>
+       
+        .accordion-item.active .accordion-content {
+            max-height: none !important;
+            overflow: visible !important;
+        }
+
+        /* Diseño moderno y exclusivo de los subacordeones. */
+        .accordion-content .subaccordion {
+            display: grid;
+            gap: 9px;
+            margin-top: 20px;
+
+            /* Barra de desplazamiento propia para los subtemas */
+            max-height: min(330px, 42vh);
+            overflow-y: auto;
+            overflow-x: hidden;
+            padding-right: 8px;
+            overscroll-behavior: contain;
+            scroll-behavior: smooth;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(105, 229, 190, 0.55) rgba(255, 255, 255, 0.06);
+        }
+        .accordion-content .subaccordion::-webkit-scrollbar {
+            width: 7px;
+        }
+        .accordion-content .subaccordion::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.06);
+            border-radius: 10px;
+        }
+        .accordion-content .subaccordion::-webkit-scrollbar-thumb {
+            background: rgba(105, 229, 190, 0.55);
+            border-radius: 10px;
+        }
+        .accordion-content .subaccordion::-webkit-scrollbar-thumb:hover {
+            background: rgba(143, 240, 207, 0.85);
+        }
+
+        .accordion-content .subaccordion-item {
+            flex-shrink: 0;
+            overflow: hidden;
+            border: 1px solid rgba(120, 220, 195, 0.19);
+            border-radius: 12px;
+            background: rgba(12, 25, 31, 0.28);
+            transition: border-color 180ms ease, background 180ms ease, transform 180ms ease;
+        }
+        .accordion-content .subaccordion-item:hover {
+            border-color: rgba(89, 220, 180, 0.42);
+            background: rgba(12, 32, 36, 0.42);
+        }
+        .accordion-content .subaccordion-header {
+            width: 100%;
+            min-height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 14px;
+            padding: 13px 16px;
+            border: 0;
+            border-radius: 0;
+            background: transparent;
+            color: #f2f7f6;
+            font-family: inherit;
+            font-size: 0.94rem;
+            font-weight: 600;
+            line-height: 1.45;
+            text-align: left;
+            cursor: pointer;
+            transition: background 180ms ease, color 180ms ease;
+        }
+        .accordion-content .subaccordion-header:hover,
+        .accordion-content .subaccordion-header[aria-expanded="true"] {
+            background: rgba(79, 211, 171, 0.08);
+            color: #8ff0cf;
+        }
+        .accordion-content .subaccordion-header span {
+            width: 25px;
+            height: 25px;
+            flex: 0 0 25px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(105, 229, 190, 0.32);
+            border-radius: 50%;
+            background: rgba(79, 211, 171, 0.10);
+            color: #75e6bd;
+            font-size: 1rem;
+            line-height: 1;
+        }
+        .accordion-content .subaccordion-content {
+            padding: 2px 16px 16px;
+            color: rgba(241, 247, 246, 0.88);
+            font-size: 0.92rem;
+            line-height: 1.7;
+            animation: subaccordionReveal 180ms ease-out;
+        }
+        .accordion-content .subaccordion-content[hidden] {
+            display: none !important;
+        }
+        .accordion-content .subaccordion-content p {
+            margin: 8px 0 12px;
+        }
+        .accordion-content .subaccordion-content p:last-child {
+            margin-bottom: 0;
+        }
+        .accordion-content .subaccordion-content a {
+            color: #7fe7c2;
+            text-decoration: underline;
+            text-decoration-color: rgba(127, 231, 194, 0.45);
+            text-underline-offset: 3px;
+            overflow-wrap: anywhere;
+            transition: color 180ms ease;
+        }
+        .accordion-content .subaccordion-content a:hover {
+            color: #c0ffe9;
+            text-decoration-color: currentColor;
+        }
+        @keyframes subaccordionReveal {
+            from { opacity: 0; transform: translateY(-3px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @media (max-width: 600px) {
+            .accordion-content .subaccordion {
+                max-height: min(300px, 48vh);
+            }
+            .accordion-content .subaccordion-header {
+                padding: 12px;
+                font-size: 0.9rem;
+            }
+            .accordion-content .subaccordion-content {
+                padding: 2px 12px 14px;
+                font-size: 0.9rem;
+            }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .accordion-content .subaccordion {
+                scroll-behavior: auto;
+            }
+            .accordion-content .subaccordion-item,
+            .accordion-content .subaccordion-header,
+            .accordion-content .subaccordion-content a {
+                transition: none;
+            }
+            .accordion-content .subaccordion-content {
+                animation: none;
+            }
+        }
+    </style>
+
 
     <!-- LIBRERÍAS EXTERNAS PARA EL PLANETA WEBGL Y ANIMACIONES -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -47,10 +203,6 @@
             <a href="#seccion-temas" class="nav-item">
                 <span class="icon">▤</span>
                 <span>Temas</span>
-            </a>
-            <a href="#seccion-simulador" class="nav-item">
-                <span class="icon">⌁</span>
-                <span>Simulador</span>
             </a>
             <a href="#seccion-acerca-de" class="nav-item">
                 <span class="icon">▧</span>
@@ -113,8 +265,46 @@
                         </button>
                         <div class="accordion-content">
                             <p>
-                                Los límites planetarios son un marco científico que define los nueve procesos ecológicos clave que mantienen la estabilidad y habitabilidad de la Tierra. Este concepto establece un "espacio operativo seguro" dentro del cual la humanidad puede desarrollarse y prosperar sin causar daños irreversibles al medio ambiente.
+                                Los límites planetarios son un marco científico que define nueve procesos ecológicos clave que mantienen la estabilidad y habitabilidad de la Tierra. Este concepto establece un espacio operativo seguro dentro del cual la humanidad puede desarrollarse sin causar daños irreversibles al medio ambiente.
                             </p>
+
+                            <div class="subaccordion">
+                                <div class="subaccordion-item">
+                                    <button class="subaccordion-header" aria-expanded="false">1. Cambio climático <span>＋</span></button>
+                                    <div class="subaccordion-content" hidden>
+                                        <p>El cambio climático se relaciona con el aumento de gases de efecto invernadero en la atmósfera, que altera el balance energético de la Tierra. La quema de combustibles fósiles y los cambios en el uso del suelo son factores importantes de este fenómeno.</p>
+                                        <p><strong>Fuente:</strong> <a href="https://science.nasa.gov/climate-change/" target="_blank" rel="noopener noreferrer">NASA — Cambio climático</a></p>
+                                    </div>
+                                </div>
+                                <div class="subaccordion-item">
+                                    <button class="subaccordion-header" aria-expanded="false">2. Integridad de la biosfera <span>＋</span></button>
+                                    <div class="subaccordion-content" hidden>
+                                        <p>La integridad de la biosfera se refiere a la diversidad de especies y al funcionamiento de los ecosistemas. La pérdida de biodiversidad puede debilitar procesos naturales esenciales, como la polinización, la fertilidad del suelo y la regulación del agua.</p>
+                                        <p><strong>Fuente:</strong> <a href="https://www.stockholmresilience.org/research/planetary-boundaries.html" target="_blank" rel="noopener noreferrer">Stockholm Resilience Centre — Límites planetarios</a></p>
+                                    </div>
+                                </div>
+                                <div class="subaccordion-item">
+                                    <button class="subaccordion-header" aria-expanded="false">3. Cambio del sistema terrestre <span>＋</span></button>
+                                    <div class="subaccordion-content" hidden>
+                                        <p>El cambio del sistema terrestre incluye la transformación de bosques, humedales y otros ecosistemas naturales en zonas agrícolas, urbanas o de infraestructura. Estos cambios pueden reducir la capacidad de los ecosistemas para almacenar carbono y sostener la vida silvestre.</p>
+                                        <p><strong>Fuente:</strong> <a href="https://www.stockholmresilience.org/research/planetary-boundaries.html" target="_blank" rel="noopener noreferrer">Stockholm Resilience Centre — Límites planetarios</a></p>
+                                    </div>
+                                </div>
+                                <div class="subaccordion-item">
+                                    <button class="subaccordion-header" aria-expanded="false">4. Agua dulce <span>＋</span></button>
+                                    <div class="subaccordion-content" hidden>
+                                        <p>El límite relacionado con el agua dulce considera el agua disponible en ríos, lagos y suelos, así como el agua que circula por los ecosistemas. La extracción excesiva, la contaminación y las alteraciones del territorio pueden afectar su disponibilidad y sus funciones ecológicas.</p>
+                                        <p><strong>Fuente:</strong> <a href="https://www.stockholmresilience.org/research/planetary-boundaries.html" target="_blank" rel="noopener noreferrer">Stockholm Resilience Centre — Límites planetarios</a></p>
+                                    </div>
+                                </div>
+                                <div class="subaccordion-item">
+                                    <button class="subaccordion-header" aria-expanded="false">5. Flujos biogeoquímicos <span>＋</span></button>
+                                    <div class="subaccordion-content" hidden>
+                                        <p>Los flujos de nitrógeno y fósforo son necesarios para la vida, pero el uso excesivo de fertilizantes y su llegada a ríos y mares puede provocar contaminación y proliferación de algas. Esto altera el equilibrio de los ecosistemas acuáticos y terrestres.</p>
+                                        <p><strong>Fuente:</strong> <a href="https://www.stockholmresilience.org/research/planetary-boundaries.html" target="_blank" rel="noopener noreferrer">Stockholm Resilience Centre — Límites planetarios</a></p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -127,8 +317,46 @@
                         </button>
                         <div class="accordion-content">
                             <p>
-                                La economía circular es un modelo de producción y consumo diseñado para proteger nuestro planeta y transformar el futuro empresarial. A diferencia del viejo sistema lineal de "tomar, hacer y desechar", este enfoque propone rediseñar, reducir, reutilizar y reciclar los materiales existentes.
+                                La economía circular es un modelo de producción y consumo diseñado para proteger el planeta y transformar el futuro empresarial. A diferencia del sistema lineal de tomar, hacer y desechar, propone eliminar residuos desde el diseño, mantener productos y materiales en uso y regenerar la naturaleza.
                             </p>
+
+                            <div class="subaccordion">
+                                <div class="subaccordion-item">
+                                    <button class="subaccordion-header" aria-expanded="false">1. Diseño para eliminar residuos y contaminación <span>＋</span></button>
+                                    <div class="subaccordion-content" hidden>
+                                        <p>La economía circular propone considerar los residuos desde la etapa de diseño. Elegir materiales adecuados, reducir embalajes innecesarios y crear productos duraderos y reparables ayuda a prevenir la generación de desechos desde el origen.</p>
+                                        <p><strong>Fuente:</strong> <a href="https://www.ellenmacarthurfoundation.org/topics/circular-economy-introduction/overview" target="_blank" rel="noopener noreferrer">Ellen MacArthur Foundation — Introducción a la economía circular</a></p>
+                                    </div>
+                                </div>
+                                <div class="subaccordion-item">
+                                    <button class="subaccordion-header" aria-expanded="false">2. Reutilización y reparación de productos <span>＋</span></button>
+                                    <div class="subaccordion-content" hidden>
+                                        <p>Reutilizar y reparar permite extender la vida útil de los productos y aprovechar mejor los recursos empleados en su fabricación. Antes de desechar un objeto, se puede evaluar si es posible mantenerlo en uso, repararlo, compartirlo o darle un nuevo propósito.</p>
+                                        <p><strong>Fuente:</strong> <a href="https://www.ellenmacarthurfoundation.org/topics/circular-economy-introduction/overview" target="_blank" rel="noopener noreferrer">Ellen MacArthur Foundation — Economía circular</a></p>
+                                    </div>
+                                </div>
+                                <div class="subaccordion-item">
+                                    <button class="subaccordion-header" aria-expanded="false">3. Reciclaje y recuperación de materiales <span>＋</span></button>
+                                    <div class="subaccordion-content" hidden>
+                                        <p>El reciclaje transforma materiales usados en materia prima para nuevos productos. Para mejorar su efectividad, es importante separar correctamente los residuos y diseñar productos cuyos componentes puedan recuperarse y procesarse.</p>
+                                        <p><strong>Fuente:</strong> <a href="https://www.unep.org/interactive/beat-plastic-pollution/" target="_blank" rel="noopener noreferrer">Programa de las Naciones Unidas para el Medio Ambiente — Contaminación por plásticos</a></p>
+                                    </div>
+                                </div>
+                                <div class="subaccordion-item">
+                                    <button class="subaccordion-header" aria-expanded="false">4. Modelos de negocio circulares <span>＋</span></button>
+                                    <div class="subaccordion-content" hidden>
+                                        <p>Los modelos circulares pueden priorizar el alquiler, el uso compartido, la reparación o la devolución de productos al fabricante. Estas alternativas buscan conservar el valor de los productos y materiales durante más tiempo, en lugar de depender únicamente de vender y desechar.</p>
+                                        <p><strong>Fuente:</strong> <a href="https://www.ellenmacarthurfoundation.org/topics/circular-economy-introduction/overview" target="_blank" rel="noopener noreferrer">Ellen MacArthur Foundation — Economía circular</a></p>
+                                    </div>
+                                </div>
+                                <div class="subaccordion-item">
+                                    <button class="subaccordion-header" aria-expanded="false">5. Regeneración de los sistemas naturales <span>＋</span></button>
+                                    <div class="subaccordion-content" hidden>
+                                        <p>Una economía circular busca ir más allá de reducir daños: también puede contribuir a regenerar los sistemas naturales. Prácticas como devolver materia orgánica al suelo, proteger los ecosistemas y utilizar recursos de forma responsable pueden apoyar la recuperación de los ciclos naturales.</p>
+                                        <p><strong>Fuente:</strong> <a href="https://www.ellenmacarthurfoundation.org/topics/circular-economy-introduction/overview" target="_blank" rel="noopener noreferrer">Ellen MacArthur Foundation — Economía circular</a></p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -141,8 +369,46 @@
                         </button>
                         <div class="accordion-content">
                             <p>
-                                Las fuentes renovables de energía son aquellos recursos naturales virtualmente inagotables que se regeneran de forma constante y limpia. La energía solar, eólica, hidráulica y biomasa aprovechan la fuerza de la naturaleza para construir un modelo energético sostenible.
+                                Las fuentes renovables de energía proceden de recursos naturales que se reponen de forma continua, como la luz solar, el viento y el agua en movimiento. Su aprovechamiento puede reducir la dependencia de combustibles fósiles, aunque cada tecnología tiene impactos y requisitos propios.
                             </p>
+
+                            <div class="subaccordion">
+                                <div class="subaccordion-item">
+                                    <button class="subaccordion-header" aria-expanded="false">1. Energía solar <span>＋</span></button>
+                                    <div class="subaccordion-content" hidden>
+                                        <p>La energía solar aprovecha la radiación del Sol. Los paneles fotovoltaicos convierten la luz en electricidad, mientras que los sistemas solares térmicos utilizan el calor para calentar agua o apoyar otros procesos. Su producción depende de la radiación disponible y de las condiciones del lugar.</p>
+                                        <p><strong>Fuente:</strong> <a href="https://www.iea.org/energy-system/renewables/solar-pv" target="_blank" rel="noopener noreferrer">Agencia Internacional de la Energía — Solar fotovoltaica</a></p>
+                                    </div>
+                                </div>
+                                <div class="subaccordion-item">
+                                    <button class="subaccordion-header" aria-expanded="false">2. Energía eólica <span>＋</span></button>
+                                    <div class="subaccordion-content" hidden>
+                                        <p>La energía eólica utiliza aerogeneradores para transformar la energía cinética del viento en electricidad. Su rendimiento depende de la velocidad y regularidad del viento, por lo que la ubicación y la planificación del proyecto son factores importantes.</p>
+                                        <p><strong>Fuente:</strong> <a href="https://www.iea.org/energy-system/renewables/wind" target="_blank" rel="noopener noreferrer">Agencia Internacional de la Energía — Energía eólica</a></p>
+                                    </div>
+                                </div>
+                                <div class="subaccordion-item">
+                                    <button class="subaccordion-header" aria-expanded="false">3. Energía hidroeléctrica <span>＋</span></button>
+                                    <div class="subaccordion-content" hidden>
+                                        <p>La energía hidroeléctrica aprovecha el movimiento o la caída del agua para accionar turbinas conectadas a generadores eléctricos. Su planificación debe considerar los caudales, los ecosistemas fluviales y las comunidades que pueden verse afectadas por la infraestructura.</p>
+                                        <p><strong>Fuente:</strong> <a href="https://www.iea.org/energy-system/renewables/hydroelectricity" target="_blank" rel="noopener noreferrer">Agencia Internacional de la Energía — Hidroelectricidad</a></p>
+                                    </div>
+                                </div>
+                                <div class="subaccordion-item">
+                                    <button class="subaccordion-header" aria-expanded="false">4. Bioenergía y biomasa <span>＋</span></button>
+                                    <div class="subaccordion-content" hidden>
+                                        <p>La bioenergía se obtiene de materia orgánica, como residuos agrícolas, forestales o ciertos residuos orgánicos. Su sostenibilidad depende del origen de la biomasa, del uso del suelo, de las emisiones generadas y de que su aprovechamiento no compita de forma perjudicial con la producción de alimentos o la conservación de ecosistemas.</p>
+                                        <p><strong>Fuente:</strong> <a href="https://www.iea.org/energy-system/renewables/bioenergy" target="_blank" rel="noopener noreferrer">Agencia Internacional de la Energía — Bioenergía</a></p>
+                                    </div>
+                                </div>
+                                <div class="subaccordion-item">
+                                    <button class="subaccordion-header" aria-expanded="false">5. Almacenamiento e integración de energías renovables <span>＋</span></button>
+                                    <div class="subaccordion-content" hidden>
+                                        <p>La generación solar y eólica varía según las condiciones meteorológicas y la hora del día. El almacenamiento, las redes eléctricas flexibles, la gestión de la demanda y la combinación de diferentes fuentes ayudan a equilibrar la oferta y la demanda de electricidad.</p>
+                                        <p><strong>Fuente:</strong> <a href="https://www.iea.org/energy-system/electricity" target="_blank" rel="noopener noreferrer">Agencia Internacional de la Energía — Sistema eléctrico</a></p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -214,6 +480,36 @@
             </div>
         </div>
     </section>
+
+
+    <script>
+        // Interacción independiente para los subacordeones.
+        document.querySelectorAll(".subaccordion-header").forEach(function (button) {
+            button.addEventListener("click", function () {
+                const content = button.nextElementSibling;
+                const isExpanded = button.getAttribute("aria-expanded") === "true";
+
+                button.setAttribute("aria-expanded", String(!isExpanded));
+                content.hidden = isExpanded;
+
+                const symbol = button.querySelector("span");
+                if (symbol) {
+                    symbol.textContent = isExpanded ? "＋" : "−";
+                }
+
+                // Al abrir un subtema, lo acerca dentro de la barra de desplazamiento
+                // para que siempre se vea completo (incluido el 5.º subtema).
+                if (!isExpanded) {
+                    setTimeout(function () {
+                        button.closest(".subaccordion-item").scrollIntoView({
+                            behavior: "smooth",
+                            block: "nearest"
+                        });
+                    }, 190);
+                }
+            });
+        });
+    </script>
 
     <!-- SCRIPT PRINCIPAL -->
     <script src="java.js"></script>
