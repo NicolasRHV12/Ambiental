@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bionova - Simulador Final</title>
+    <link rel="icon" type="image/png" href="img/planeta-tierra.png">
+    <link rel="stylesheet" href="simuladorfinal.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/map.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/geodata/worldLow.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+</head>
+<body>
+    <div id="tsparticles" aria-hidden="true"></div>
+
+    <div id="setup-modal" class="modal-overlay">
+        <div class="modal-content setup-content" role="dialog" aria-modal="true" aria-labelledby="setup-title">
+            <h2 id="setup-title">Prepara tu simulación</h2>
+            <p>Evalúa primero tu cadena de economía circular. Después define el alcance y, si quieres, un presupuesto límite.</p>
+
+            <section class="setup-section" aria-labelledby="economy-title">
+                <h3 id="economy-title">1. Diseña tu cadena circular</h3>
+                <p>Agrega las etapas y ordénalas como quieras. Selecciona una etapa para quitarla.</p>
+                <div id="economy-stage-buttons" class="economy-stage-buttons"></div>
+                <div id="economy-chain" class="economy-chain" aria-label="Etapas de la cadena circular">
+                    <span class="economy-empty">Agrega al menos una etapa para comenzar.</span>
+                </div>
+                <div class="economy-actions">
+                    <button class="setup-secondary-btn" id="btn-clear-economy" type="button">Limpiar cadena</button>
+                    <button class="setup-primary-btn" id="btn-evaluate-economy" type="button">Evaluar economía</button>
+                </div>
+                <div id="economy-result" class="economy-result hidden" role="status" aria-live="polite"></div>
+                <p id="economy-error" class="data-error hidden" role="alert"></p>
+            </section>
+
+            <section class="setup-section" aria-labelledby="scope-title">
+                <h3 id="scope-title">2. Elige el alcance</h3>
+                <div class="modal-options">
+                    <button class="scope-btn selected" data-scope="global" type="button" aria-pressed="true">
+                        <h4>🌍 Nivel Global</h4>
+                        <p>Entorno mundial y demanda energética alta.</p>
+                    </button>
+                    <button class="scope-btn" data-scope="colombia" type="button" aria-pressed="false">
+                        <h4>🇨🇴 Nivel Colombia</h4>
+                        <p>Enfoque local en territorio y biodiversidad.</p>
+                    </button>
+                </div>
+            </section>
+
+            <section class="setup-section budget-setup" aria-labelledby="budget-title">
+                <h3 id="budget-title">3. Presupuesto del reto</h3>
+                <label class="budget-toggle">
+                    <input id="budget-cap-toggle" type="checkbox">
+                    <span>Activar un límite de presupuesto (millones)</span>
+                </label>
+                <div class="budget-input-row">
+                    <label for="budget-cap-input">Presupuesto máximo:</label>
+                    <input id="budget-cap-input" type="number" min="0.01" step="any" placeholder="Sin límite" disabled>
+                    <span>M</span>
+                </div>
+                <p>Si no activas el límite, el presupuesto será ilimitado.</p>
+            </section>
+            <p id="setup-message" class="setup-message" role="status">Evalúa tu economía circular para habilitar el simulador.</p>
+            <button id="btn-enter-simulator" class="setup-primary-btn enter-simulator-btn" type="button" disabled>Continuar al planeta</button>
+        </div>
+    </div>
+
+    <nav class="top-nav" aria-label="Navegación del simulador">
+        <a href="index.html" class="back-btn">← Volver al Menú</a>
+        <div class="sim-header-stats">
+            <div class="stat-box">Demanda: <span id="ui-demand">Pendiente</span></div>
+            <div class="stat-box">Generación media: <span id="ui-supply">Pendiente</span></div>
+            <div class="stat-box">Presupuesto: <span id="ui-budget">Sin límite</span></div>
+        </div>
+    </nav>
+
+    <main class="sim-main-layout hidden" id="main-ui">
+        <aside class="sim-sidebar">
+            <div class="tabs" role="tablist" aria-label="Inventario">
+                <button class="tab-btn active" id="tab-button-infra" role="tab" aria-selected="true" aria-controls="tab-infra" onclick="switchTab('infra')">🏙️ Infra</button>
+                <button class="tab-btn" id="tab-button-energy" role="tab" aria-selected="false" aria-controls="tab-energy" onclick="switchTab('energy')">⚡ Energía</button>
+                <button class="tab-btn" id="tab-button-policy" role="tab" aria-selected="false" aria-controls="tab-policy" onclick="switchTab('policy')">♻️ Políticas</button>
+            </div>
+            <div id="tab-infra" class="tab-content active" role="tabpanel" aria-labelledby="tab-button-infra"></div>
+            <div id="tab-energy" class="tab-content hidden" role="tabpanel" aria-labelledby="tab-button-energy"></div>
+            <div id="tab-policy" class="tab-content hidden" role="tabpanel" aria-labelledby="tab-button-policy"></div>
+        </aside>
+
+        <section class="sim-canvas-area map-panel" id="dropzone" aria-label="Planeta interactivo: arrastra aquí proyectos y tecnologías" ondragover="allowDrop(event)" ondrop="drop(event)" ondragleave="leaveDropzone(event)">
+                <div class="map-heading">
+                    <div>
+                        <h2>Planeta interactivo</h2>
+                        <p id="map-scope-label">Arrastra proyectos directamente sobre el planeta</p>
+                    </div>
+                    <span class="map-legend">Haz clic en un marcador para retirarlo</span>
+                </div>
+                <div class="map-canvas-wrap">
+                    <div id="chartdiv" aria-label="Globo terráqueo interactivo"></div>
+                    <p class="drop-hint">Arrastra un elemento o selecciónalo y pulsa sobre el planeta.</p>
+                </div>
+                <a class="author-credit"
+                    href="https://codepen.io/amcharts"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Ver los proyectos de amCharts en CodePen">amCharts ↗</a>
+        </section>
+
+        <aside class="sim-right-panel">
+            <h2>Límites Planetarios</h2>
+            <div id="planet-status-text" role="status">Ecosistema Estable</div>
+            <div id="progress-bars-container" class="progress-scroll"></div>
+            <div class="sim-chart-container">
+                <button class="btn-play" id="btn-simulate" onclick="runSimulation()">▶ Simular 24h</button>
+                <div id="simulation-result" class="simulation-result" role="status" aria-live="polite">Simula el día para conocer la demanda aleatoria, la generación y el posible déficit.</div>
+                <canvas id="simChart" aria-label="Gráfico de demanda y generación eléctrica"></canvas>
+            </div>
+        </aside>
+    </main>
+
+    <script src="simuladorfinal.js"></script>
+</body>
+</html>
