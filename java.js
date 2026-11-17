@@ -15,6 +15,61 @@ accordionHeaders.forEach((header) => {
     });
 });
 
+// CARRUSEL DE IMÁGENES DE LA PORTADA
+const heroCarousel = document.querySelector(".hero-carousel");
+
+if (heroCarousel) {
+    const carouselImages = heroCarousel.querySelectorAll(".hero-planet");
+    const carouselIndicators = heroCarousel.querySelectorAll(".carousel-indicator");
+    const previousButton = heroCarousel.querySelector(".carousel-previous");
+    const nextButton = heroCarousel.querySelector(".carousel-next");
+    let activeSlide = 0;
+    let carouselTimer;
+
+    function showCarouselSlide(index) {
+        activeSlide = (index + carouselImages.length) % carouselImages.length;
+
+        carouselImages.forEach((image, imageIndex) => {
+            image.classList.toggle("is-active", imageIndex === activeSlide);
+        });
+
+        carouselIndicators.forEach((indicator, indicatorIndex) => {
+            const isActive = indicatorIndex === activeSlide;
+            indicator.classList.toggle("is-active", isActive);
+            if (isActive) {
+                indicator.setAttribute("aria-current", "true");
+            } else {
+                indicator.removeAttribute("aria-current");
+            }
+        });
+    }
+
+    function startCarouselTimer() {
+        window.clearInterval(carouselTimer);
+        carouselTimer = window.setInterval(() => {
+            showCarouselSlide(activeSlide + 1);
+        }, 5000);
+    }
+
+    previousButton.addEventListener("click", () => {
+        showCarouselSlide(activeSlide - 1);
+        startCarouselTimer();
+    });
+
+    nextButton.addEventListener("click", () => {
+        showCarouselSlide(activeSlide + 1);
+        startCarouselTimer();
+    });
+
+    carouselIndicators.forEach((indicator, index) => {
+        indicator.addEventListener("click", () => {
+            showCarouselSlide(index);
+            startCarouselTimer();
+        });
+    });
+
+    startCarouselTimer();
+}
 
 // NAVEGACIÓN
 const navItems = document.querySelectorAll(".nav-item");

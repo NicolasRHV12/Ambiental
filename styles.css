@@ -261,17 +261,89 @@ body::before {
 
 .hero-image-wrap {
     flex: 1;
+    min-width: 0;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.hero-planet {
+.hero-carousel {
+    position: relative;
     width: 100%;
     max-width: 700px;
-    border-radius: 10%;
+    aspect-ratio: 3 / 2;
+    overflow: hidden;
+    border-radius: 32px;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.578);
     transform: translateX(40px);
+    background: rgba(15, 20, 25, 0.2);
+}
+
+.hero-planet {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.hero-planet.is-active {
+    opacity: 1;
+}
+
+.carousel-control {
+    position: absolute;
+    top: 50%;
+    z-index: 1;
+    width: 42px;
+    height: 42px;
+    border: 1px solid rgba(255, 255, 255, 0.45);
+    border-radius: 50%;
+    color: #ffffff;
+    background: rgba(0, 0, 0, 0.45);
+    font-size: 30px;
+    line-height: 1;
+    cursor: pointer;
+    transform: translateY(-50%);
+}
+
+.carousel-control:hover,
+.carousel-control:focus-visible {
+    background: rgba(0, 0, 0, 0.75);
+}
+
+.carousel-previous {
+    left: 16px;
+}
+
+.carousel-next {
+    right: 16px;
+}
+
+.carousel-indicators {
+    position: absolute;
+    bottom: 16px;
+    left: 50%;
+    z-index: 1;
+    display: flex;
+    gap: 9px;
+    transform: translateX(-50%);
+}
+
+.carousel-indicator {
+    width: 10px;
+    height: 10px;
+    padding: 0;
+    border: 1px solid #ffffff;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+}
+
+.carousel-indicator.is-active {
+    background: #ffffff;
 }
 
 /* CONTENEDOR DUAL: PLANETA 3D + ACORDEÓN */
@@ -562,9 +634,9 @@ body::before {
         flex-direction: column;
     }
 
-    .hero-planet {
-        transform: translateX(0);
+    .hero-carousel {
         margin-top: 30px;
+        transform: none;
     }
 }
 
